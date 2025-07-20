@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRC😎😎 Precision Turning Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@0.395.0"></script>
+    <script src="https://unpkg.com/@rive-app/canvas@2.17.3/rive.min.js"></script>
+    <style>
+        @keyframes fadeInDown {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes pulseSlow {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1.05);
+            opacity: 0.8;
+          }
+        }
+
+        @keyframes bounceSlow {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
+        .animate-fade-in-down {
+          animation: fadeInDown 0.8s ease-out forwards;
+        }
+
+        .animate-fade-in-up {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-pulse-slow {
+          animation: pulseSlow 2s infinite ease-in-out;
+        }
+
+        .animate-bounce-slow {
+          animation: bounceSlow 1.5s infinite ease-in-out;
+        }
+
+        /* Custom pattern for banners */
+        .bg-pattern {
+          background-size: 60px 60px;
+          background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule=\'evenodd\'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 30v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 30v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-30V0H4v4H0v2h4v4h2V6H4V4H0zm0 30v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0 30v-4H4v4H0v2h4v4h2v-4h4v-2H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Styling for the Rive canvas to ensure it fills the container */
+        #rive-canvas {
+            width: 100%;
+            height: 100%;
+            display: block; /* Ensures no extra space around the canvas */
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 font-sans antialiased">
+
+    <header class="bg-gradient-to-r from-gray-900 to-gray-800 text-white p-4 shadow-2xl sticky top-0 z-50">
+      <div class="container mx-auto flex items-center justify-between flex-wrap">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+          <span class="font-extrabold text-3xl tracking-wide rounded-lg p-2 bg-indigo-600 hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105">SRC😎😎</span>
+        </div>
+
+        <div class="relative w-full md:w-1/3 my-2 md:my-0">
+          <input
+            type="text"
+            placeholder="Search tools..."
+            class="w-full pl-10 pr-4 py-2 rounded-full bg-gray-700 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-gray-600 transition-colors duration-200"
+          />
+          <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size="20"></i>
+        </div>
+
+        <div class="flex items-center space-x-4 my-2 md:my-0">
+          <i data-lucide="bell" class="text-gray-300 hover:text-indigo-400 cursor-pointer transition-colors duration-200 transform hover:scale-110" size="24"></i>
+          <i data-lucide="user" class="text-gray-300 hover:text-indigo-400 cursor-pointer transition-colors duration-200 transform hover:scale-110" size="24"></i>
+        </div>
+
+        <nav class="w-full flex justify-center md:justify-end mt-4 md:mt-0">
+          <ul class="flex flex-wrap space-x-6">
+            <li>
+              <button id="nav-home" class="flex items-center px-4 py-2 rounded-full text-base font-semibold transition-all duration-300 bg-indigo-600 text-white shadow-md">
+                <i data-lucide="home" class="mr-2" size="18"></i> Home
+              </button>
+            </li>
+            <li>
+              <button id="nav-tools" class="flex items-center px-4 py-2 rounded-full text-base font-semibold transition-all duration-300 text-gray-300 hover:bg-gray-700 hover:text-white hover:shadow-sm">
+                <i data-lucide="wrench" class="mr-2" size="18"></i> Turning Tools
+              </button>
+            </li>
+            <li>
+              <button id="nav-about" class="flex items-center px-4 py-2 rounded-full text-base font-semibold transition-all duration-300 text-gray-300 hover:bg-gray-700 hover:text-white hover:shadow-sm">
+                <i data-lucide="info" class="mr-2" size="18"></i> About Us
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div id="main-content"></div>
+
+    <footer class="bg-gray-900 text-white p-8 mt-12 shadow-inner">
+      <div class="container mx-auto text-center text-gray-400">
+        <p class="text-lg">© <span id="current-year"></span> SRC😎😎. All rights reserved.</p>
+        <p class="mt-3 text-md">Precision crafted for the future of machining.</p>
+        <div class="flex justify-center space-x-6 mt-6">
+          <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors duration-200">Privacy Policy</a>
+          <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors duration-200">Terms of Service</a>
+          <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors duration-200">Sitemap</a>
+        </div>
+        <div class="flex justify-center space-x-6 mt-6">
+          <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors duration-200" title="Instagram">
+            <i data-lucide="instagram" size="24"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors duration-200" title="LinkedIn">
+            <i data-lucide="linkedin" size="24"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors duration-200" title="Facebook">
+            <i data-lucide="facebook" size="24"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors duration-200" title="Twitter">
+            <i data-lucide="twitter" size="24"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+        // Function to update Lucide icons
+        function renderLucideIcons() {
+            lucide.createIcons();
+        }
+
+        // Function to create a static banner HTML string (for internal pages)
+        function createStaticBannerHtml(title, description) {
+            return `
+                <section class="relative bg-gradient-to-br from-indigo-700 to-purple-900 text-white py-24 px-4 rounded-xl shadow-2xl overflow-hidden transform hover:scale-[1.01] transition-transform duration-500 ease-in-out">
+                    <div class="absolute inset-0 opacity-10 bg-pattern"></div>
+                    <div class="container mx-auto text-center relative z-10">
+                        <h1 class="text-6xl md:text-7xl font-extrabold mb-6 leading-tight drop-shadow-lg animate-fade-in-down">${title}</h1>
+                        <p class="text-2xl md:text-3xl font-light max-w-4xl mx-auto mb-10 opacity-90 animate-fade-in-up">${description}</p>
+                        <button class="bg-white text-indigo-700 hover:bg-gray-100 font-bold py-4 px-10 rounded-full shadow-xl transform hover:scale-110 hover:rotate-1 transition-all duration-500 ease-in-out ring-4 ring-white ring-opacity-30">
+                            Learn More
+                        </button>
+                    </div>
+                </section>
+            `;
+        }
+
+        // Rive Animation Banner HTML for the Home Page
+        const riveBannerHtml = `
+            <section class="relative w-full h-[60vh] md:h-[80vh] overflow-hidden rounded-xl shadow-2xl flex items-center justify-center bg-gray-800">
+                <canvas id="rive-canvas" class="absolute inset-0 w-full h-full object-cover"></canvas>
+                <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-white text-center p-4">
+                    <h1 class="text-6xl md:text-7xl font-extrabold mb-6 leading-tight drop-shadow-lg animate-fade-in-down">Precision. Performance. Productivity.</h1>
+                    <p class="text-2xl md:text-3xl font-light max-w-4xl mx-auto mb-10 opacity-90 animate-fade-in-up">
+                        Your global partner in advanced turning solutions for unparalleled machining efficiency.
+                    </p>
+                    <button class="bg-white text-indigo-700 hover:bg-gray-100 font-bold py-4 px-10 rounded-full shadow-xl transform hover:scale-110 hover:rotate-1 transition-all duration-500 ease-in-out ring-4 ring-white ring-opacity-30">
+                        Explore Our Tools
+                    </button>
+                </div>
+            </section>
+        `;
+
+        // Function to initialize Rive animation
+        function initRiveAnimation() {
+            const canvas = document.getElementById('rive-canvas');
+            if (canvas && typeof rive !== 'undefined') {
+                new rive.Rive({
+                    canvas: canvas,
+                    // IMPORTANT: Replace this URL with your actual Rive file URL
+                    // You can find public examples on Rive's community page or export your own.
+                    src: 'https://cdn.rive.app/animations/vehicles.riv', // Example Rive animation
+                    autoplay: true,
+                    loop: true,
+                    stateMachines: 'bumpy', // If your Rive file has a state machine named 'bumpy'
+                    onLoad: () => {
+                        console.log('Rive animation loaded successfully.');
+                    },
+                    onError: (error) => {
+                        console.error('Error loading Rive animation:', error);
+                        // Fallback message if Rive fails to load
+                        if (canvas.parentNode) {
+                            const fallbackDiv = document.createElement('div');
+                            fallbackDiv.className = 'absolute inset-0 flex items-center justify-center bg-gray-900 text-white text-xl p-4 text-center';
+                            fallbackDiv.textContent = 'Animation could not be loaded. Please check your internet connection or try again later.';
+                            canvas.parentNode.replaceChild(fallbackDiv, canvas);
+                        }
+                    }
+                });
+            } else if (canvas) {
+                // Fallback if Rive library is not loaded
+                const fallbackDiv = document.createElement('div');
+                fallbackDiv.className = 'absolute inset-0 flex items-center justify-center bg-gray-900 text-white text-xl p-4 text-center';
+                fallbackDiv.textContent = 'Animation library not loaded. Please check your internet connection.';
+                canvas.parentNode.replaceChild(fallbackDiv, canvas);
+            }
+        }
+
+        // Home Page Content HTML
+        const homePageHtml = `
+            <main class="container mx-auto my-12 p-4">
+                ${riveBannerHtml}
+
+                <section class="mt-16 bg-white p-10 rounded-xl shadow-2xl border border-gray-200">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Our Turning Tool Solutions</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <div class="bg-gradient-to-br from-indigo-50 to-blue-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center border border-indigo-100">
+                            <i data-lucide="circle-dot" size="60" class="text-indigo-600 mb-6 animate-bounce-slow"></i>
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-4">Turning Inserts</h3>
+                            <p class="text-gray-700 text-lg">Discover our extensive range of turning inserts, engineered for superior chip control, wear resistance, and surface finish across diverse materials and applications.</p>
+                            <img src="https://placehold.co/300x200/A78BFA/FFFFFF?text=Turning+Insert+Type+A" alt="Turning Insert Type A" class="mt-6 rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x200/A78BFA/FFFFFF?text=Image+Not+Found';">
+                        </div>
+                        <div class="bg-gradient-to-br from-green-50 to-teal-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center border border-green-100">
+                            <i data-lucide="tool" size="60" class="text-green-600 mb-6 animate-bounce-slow"></i>
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-4">Tool Holders</h3>
+                            <p class="text-gray-700 text-lg">Explore our robust and precise tool holders, designed for maximum stability, vibration dampening, and efficient coolant delivery for optimal turning operations.</p>
+                            <img src="https://placehold.co/300x200/34D399/FFFFFF?text=Tool+Holder+Type+B" alt="Tool Holder Type B" class="mt-6 rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x200/34D399/FFFFFF?text=Image+Not+Found';">
+                        </div>
+                        <div class="bg-gradient-to-br from-yellow-50 to-orange-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center border border-yellow-100">
+                            <i data-lucide="circle-dashed" size="60" class="text-yellow-600 mb-6 animate-bounce-slow"></i>
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-4">Boring Bars</h3>
+                            <p class="text-gray-700 text-lg">Achieve exceptional internal machining with our high-precision boring bars, offering superior rigidity and versatility for various bore diameters and depths.</p>
+                            <img src="https://placehold.co/300x200/FACC15/FFFFFF?text=Boring+Bar+Type+C" alt="Boring Bar Type C" class="mt-6 rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x200/FACC15/FFFFFF?text=Image+Not+Found';">
+                        </div>
+                        <div class="bg-gradient-to-br from-red-50 to-pink-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center border border-red-100">
+                            <i data-lucide="scissors" size="60" class="text-red-600 mb-6 animate-bounce-slow"></i>
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-4">Parting & Grooving</h3>
+                            <p class="text-gray-700 text-lg">Our parting and grooving tools deliver high accuracy and reliability, ensuring clean cuts and consistent groove forms for efficient component separation.</p>
+                            <img src="https://placehold.co/300x200/EF4444/FFFFFF?text=Grooving+Tool+Type+D" alt="Grooving Tool Type D" class="mt-6 rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x200/EF4444/FFFFFF?text=Image+Not+Found';">
+                        </div>
+                        <div class="bg-gradient-to-br from-purple-50 to-fuchsia-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center border border-purple-100">
+                            <i data-lucide="settings-2" size="60" class="text-purple-600 mb-6 animate-bounce-slow"></i>
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-4">Thread Turning</h3>
+                            <p class="text-gray-700 text-lg">Produce high-quality threads with our specialized thread turning tools, designed for precision, long tool life, and excellent surface finish in various threading applications.</p>
+                            <img src="https://placehold.co/300x200/A855F7/FFFFFF?text=Thread+Tool+Type+E" alt="Thread Turning Tool Type E" class="mt-6 rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x200/A855F7/FFFFFF?text=Image+Not+Found';">
+                        </div>
+                        <div class="bg-gradient-to-br from-cyan-50 to-blue-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center border border-cyan-100">
+                            <i data-lucide="gauge" size="60" class="text-cyan-600 mb-6 animate-bounce-slow"></i>
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-4">Tooling Systems</h3>
+                            <p class="text-gray-700 text-lg">Integrated tooling systems for optimized performance, quick changeovers, and enhanced process security, maximizing your machine utilization.</p>
+                            <img src="https://placehold.co/300x200/06B6D4/FFFFFF?text=Tooling+System+Type+F" alt="Tooling System Type F" class="mt-6 rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x200/06B6D4/FFFFFF?text=Image+Not+Found';">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-16 bg-gradient-to-br from-gray-50 to-gray-100 p-10 rounded-xl shadow-2xl border border-gray-200 text-center">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 leading-tight">Turning Applications in Action</h2>
+                    <div class="relative w-full max-w-4xl mx-auto aspect-video rounded-xl shadow-xl overflow-hidden">
+                        <iframe
+                            class="absolute top-0 left-0 w-full h-full"
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&modestbranding=1&rel=0"
+                            title="Turning Application Video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                    <p class="text-gray-700 text-lg mt-8 max-w-2xl mx-auto">
+                        See our precision turning tools in action, demonstrating superior performance and efficiency in various industrial applications.
+                    </p>
+                </section>
+
+                <section class="mt-16 bg-white p-10 rounded-xl shadow-2xl border border-gray-200">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Featured Innovations</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <div class="bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden border border-gray-100">
+                            <img src="https://placehold.co/600x400/FFD1DC/FF007F?text=High+Feed+Insert+Innovation" alt="High Feed Insert Innovation" class="w-full h-56 object-cover transform hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFD1DC/FF007F?text=Image+Not+Found';">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-3">Advanced High-Feed Turning Inserts</h3>
+                                <p class="text-gray-700 text-base leading-relaxed">Engineered for maximum material removal rates and extended tool life in demanding applications, our new high-feed inserts redefine productivity in heavy-duty turning.</p>
+                                <a href="#" class="inline-block mt-4 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-200">View Details →</a>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden border border-gray-100">
+                            <img src="https://placehold.co/600x400/D1FADF/008000?text=Modular+Tooling+Innovation" alt="Modular Tooling System Innovation" class="w-full h-56 object-cover transform hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/D1FADF/008000?text=Image+Not+Found';">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-3">Modular Quick-Change Tooling System</h3>
+                                <p class="text-gray-700 text-base leading-relaxed">Revolutionize your setup times with our innovative modular tooling system, designed for rapid and precise tool changes, significantly boosting machine uptime and flexibility.</p>
+                                <a href="#" class="inline-block mt-4 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-200">View Details →</a>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden border border-gray-100">
+                            <img src="https://placehold.co/600x400/D1E7FF/0000FF?text=Smart+Tool+Innovation" alt="Smart Tooling Sensor Innovation" class="w-full h-56 object-cover transform hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/D1E7FF/0000FF?text=Image+Not+Found';">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-3">Integrated Smart Tooling with Sensors</h3>
+                                <p class="text-gray-700 text-base leading-relaxed">Our smart tools feature integrated sensors for real-time monitoring of cutting forces and vibrations, enabling predictive maintenance and optimizing machining parameters for peak performance.</p>
+                                <a href="#" class="inline-block mt-4 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-200">View Details →</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-16 bg-gradient-to-br from-blue-50 to-indigo-50 p-10 rounded-xl shadow-2xl border border-blue-100">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Why Choose SRC😎😎 Tools?</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                        <div class="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 border border-gray-100">
+                            <i data-lucide="gauge-circle" size="70" class="text-indigo-600 mb-6 animate-pulse-slow"></i>
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-3">Unmatched Precision</h3>
+                            <p class="text-gray-700 text-lg">Our tools are engineered to the tightest tolerances, ensuring superior accuracy and surface finish in every turning operation.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 border border-gray-100">
+                            <i data-lucide="trending-up" size="70" class="text-green-600 mb-6 animate-pulse-slow"></i>
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-3">Boosted Productivity</h3>
+                            <p class="text-gray-700 text-lg">Designed for higher material removal rates and extended tool life, our solutions significantly reduce cycle times and increase your output.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 border border-gray-100">
+                            <i data-lucide="award" size="70" class="text-purple-600 mb-6 animate-pulse-slow"></i>
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-3">Reliability & Durability</h3>
+                            <p class="text-gray-700 text-lg">Manufactured from premium materials with advanced coatings, our tools offer exceptional durability and consistent performance in demanding environments.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-16 bg-gradient-to-br from-indigo-800 to-purple-900 text-white py-20 px-4 rounded-xl shadow-2xl text-center transform hover:scale-[1.01] transition-transform duration-500 ease-in-out">
+                    <h2 class="text-5xl md:text-6xl font-extrabold mb-6 animate-fade-in-down">Ready to Optimize Your Turning Process?</h2>
+                    <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-10 opacity-90 animate-fade-in-up">
+                        Connect with our experts to find the perfect turning tool solution for your specific application and achieve new levels of efficiency.
+                    </p>
+                    <button class="bg-white text-indigo-800 hover:bg-gray-100 font-bold py-4 px-12 rounded-full shadow-xl transform hover:scale-110 hover:rotate-1 transition-all duration-500 ease-in-out ring-4 ring-white ring-opacity-30">
+                        Request a Consultation
+                    </button>
+                </section>
+            </main>
+        `;
+
+        // Turning Tools Page Content HTML (formerly Services)
+        const toolsPageHtml = `
+            <main class="container mx-auto my-12 p-4">
+                ${createStaticBannerHtml(
+                    "Comprehensive Turning Tool Solutions",
+                    "Explore our extensive range of high-performance turning tools, engineered for precision, durability, and maximum productivity across all machining operations."
+                )}
+
+                <section class="mt-16 bg-white p-10 rounded-xl shadow-2xl border border-gray-200">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Our Turning Tool Categories</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="bg-gradient-to-br from-indigo-50 to-blue-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-indigo-100">
+                            <img src="https://placehold.co/600x400/A78BFA/FFFFFF?text=Turning+Inserts+Variety" alt="Turning Inserts Variety" class="w-full h-56 object-cover rounded-lg mb-6 transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/600x400/A78BFA/FFFFFF?text=Image+Not+Found';">
+                            <h3 class="text-3xl font-semibold text-indigo-700 mb-5">Turning Inserts</h3>
+                            <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                                Our turning inserts are at the core of efficient machining. Available in a vast array of geometries, grades, and chipbreakers, they are designed to optimize performance for every material, from hardened steels to superalloys. Achieve superior surface finish, excellent chip control, and extended tool life, reducing your production costs.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-800 mt-4 space-y-2 text-md">
+                                <li>**ISO Turning Inserts:** CNMG, DNMG, WNMG, TNMG, VNMG, CCMT, DCMT, VCMT, etc.</li>
+                                <li>**Advanced Materials:** Ceramic, CBN (Cubic Boron Nitride), and PCD (Polycrystalline Diamond) Inserts for high-speed machining and challenging materials.</li>
+                                <li>**Geometries:** Precision-ground and pressed geometries for light, medium, and heavy-duty applications.</li>
+                                <li>**Chipbreakers:** Optimized chipbreakers (e.g., M-geometry, P-geometry, K-geometry) for various chip control needs and material types.</li>
+                                <li>**Coatings:** Latest PVD and CVD coating technologies (TiN, AlTiN, AlCrN) for enhanced wear resistance, heat dissipation, and extended tool life.</li>
+                            </ul>
+                            <a href="#" class="inline-block mt-6 bg-indigo-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-indigo-700 transition-colors duration-200">View Inserts</a>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-50 to-teal-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-green-100">
+                            <img src="https://placehold.co/600x400/34D399/FFFFFF?text=Tool+Holders+Variety" alt="Tool Holders Variety" class="w-full h-56 object-cover rounded-lg mb-6 transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/600x400/34D399/FFFFFF?text=Image+Not+Found';">
+                            <h3 class="text-3xl font-semibold text-purple-700 mb-5">Tool Holders & Adapters</h3>
+                            <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                                Our tool holders provide the essential rigidity and stability for consistent turning performance. From standard shank tools to advanced modular systems, we offer solutions that ensure precise insert clamping, efficient coolant delivery, and minimal vibration, leading to improved surface quality and extended tool life.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-800 mt-4 space-y-2 text-md">
+                                <li>**External Turning Holders:** For general turning, profiling, and facing.</li>
+                                <li>**Internal Turning Holders:** For boring and internal profiling.</li>
+                                <li>**Modular Quick-Change Systems:** Systems like Coromant Capto-like interfaces for rapid and repeatable tool changes, increasing machine uptime.</li>
+                                <li>**Vibration-Dampened Boring Bars:** Designed with advanced dampening technology for stable machining in long overhang applications.</li>
+                                <li>**High-Pressure Coolant Solutions:** Integrated nozzles and channels for precise coolant delivery, improving chip control and tool life.</li>
+                            </ul>
+                            <a href="#" class="inline-block mt-6 bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-green-700 transition-colors duration-200">View Holders</a>
+                        </div>
+                        <div class="bg-gradient-to-br from-yellow-50 to-orange-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-yellow-100">
+                            <img src="https://placehold.co/600x400/FACC15/FFFFFF?text=Boring+Tools+Variety" alt="Boring Tools Variety" class="w-full h-56 object-cover rounded-lg mb-6 transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FACC15/FFFFFF?text=Image+Not+Found';">
+                            <h3 class="text-3xl font-semibold text-green-700 mb-5">Boring Tools</h3>
+                            <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                                Achieve perfect internal diameters with our comprehensive range of boring tools. From rough boring to fine finishing, our solutions minimize vibration and maximize precision, even in deep holes. Our modular systems offer flexibility for various bore sizes and applications, ensuring optimal chip evacuation.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-800 mt-4 space-y-2 text-md">
+                                <li>**Rough Boring Heads:** For high material removal rates in initial bore creation.</li>
+                                <li>**Fine Boring Heads:** For achieving tight tolerances and superior surface finishes.</li>
+                                <li>**Anti-Vibration Boring Bars:** Specialized for deep and slender holes, preventing chatter and improving stability.</li>
+                                <li>**Micro-Adjustable Boring Tools:** For precise diameter adjustments to meet exact specifications.</li>
+                                <li>**Modular Boring Systems:** Versatile systems allowing various configurations for different boring operations.</li>
+                            </ul>
+                            <a href="#" class="inline-block mt-6 bg-yellow-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-yellow-700 transition-colors duration-200">View Boring Tools</a>
+                        </div>
+                        <div class="bg-gradient-to-br from-red-50 to-pink-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-red-100">
+                            <img src="https://placehold.co/600x400/EF4444/FFFFFF?text=Parting+Grooving+Variety" alt="Parting & Grooving Tools Variety" class="w-full h-56 object-cover rounded-lg mb-6 transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/600x400/EF4444/FFFFFF?text=Image+Not+Found';">
+                            <h3 class="text-3xl font-semibold text-red-700 mb-5">Parting & Grooving Tools</h3>
+                            <p class="text-gray-700 leading-relaxed text-lg mb-6">
+                                Our parting and grooving solutions are designed for highly stable and secure machining, delivering excellent chip control and surface finish. Whether you need to part off a component or create precise grooves, our tools ensure high accuracy and long tool life, minimizing burrs and rework.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-800 mt-4 space-y-2 text-md">
+                                <li>**External and Internal Grooving Tools:** For creating precise internal and external grooves.</li>
+                                <li>**Precision Parting Blades and Holders:** Engineered for clean and efficient component separation with minimal burr.</li>
+                                <li>**Optimized Geometries:** Specific geometries for excellent chip evacuation in narrow grooves.</li>
+                                <li>**High-Pressure Coolant Options:** Directed coolant to the cutting edge for improved chip control and tool life.</li>
+                                <li>**Solutions for Various Applications:** From circlip grooves to deep, narrow grooves and face grooving.</li>
+                            </ul>
+                            <a href="#" class="inline-block mt-6 bg-red-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-red-700 transition-colors duration-200">View Parting & Grooving</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-16 bg-gradient-to-br from-purple-50 to-fuchsia-100 p-10 rounded-xl shadow-2xl border border-purple-100">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Tooling Accessories & Systems</h2>
+                    <p class="text-xl text-gray-700 text-center max-w-3xl mx-auto mb-10">
+                        Enhance your turning operations with our range of high-quality accessories and integrated tooling systems, designed for efficiency and versatility.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center border border-gray-100">
+                            <img src="https://placehold.co/300x200/A855F7/FFFFFF?text=Quick+Change+System+Accessory" alt="Quick Change System Accessory" class="w-full h-40 object-cover rounded-lg mb-4">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Quick Change Systems</h3>
+                            <p class="text-gray-700 text-md">Minimize downtime with our rapid tool change solutions, ensuring seamless transitions between operations and maximizing machine utilization.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center border border-gray-100">
+                            <img src="https://placehold.co/300x200/06B6D4/FFFFFF?text=Coolant+Nozzles+Accessory" alt="Coolant Nozzles Accessory" class="w-full h-40 object-cover rounded-lg mb-4">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">High-Pressure Coolant Nozzles</h3>
+                            <p class="text-gray-700 text-md">Optimize chip evacuation and extend tool life with precise and powerful coolant delivery directly to the cutting zone, enhancing process security.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center border border-gray-100">
+                            <img src="https://placehold.co/300x200/FACC15/FFFFFF?text=Tool+Setting+Gauge+Accessory" alt="Tool Setting Gauge Accessory" class="w-full h-40 object-cover rounded-lg mb-4">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Tool Setting & Measuring Devices</h3>
+                            <p class="text-gray-700 text-md">Ensure accurate tool setup and measurement with our range of precision devices, reducing errors, improving consistency, and speeding up production.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-16 bg-gradient-to-br from-cyan-50 to-blue-100 p-10 rounded-xl shadow-2xl border border-cyan-100">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Material-Specific Turning Solutions</h2>
+                    <p class="text-xl text-gray-700 text-center max-w-3xl mx-auto mb-10">
+                        Our tools are engineered to excel across a wide spectrum of materials, ensuring optimal performance for your specific workpiece.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center border border-gray-100">
+                            <img src="https://placehold.co/150x100/A78BFA/FFFFFF?text=Steel+Machining" alt="Steel Machining" class="w-full h-24 object-contain mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Steel</h3>
+                            <p class="text-gray-700 text-sm">Optimized geometries and grades for various steel types, ensuring excellent chip control and tool life in both roughing and finishing operations.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center border border-gray-100">
+                            <img src="https://placehold.co/150x100/34D399/FFFFFF?text=Stainless+Steel+Machining" alt="Stainless Steel Machining" class="w-full h-24 object-contain mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Stainless Steel</h3>
+                            <p class="text-gray-700 text-sm">Solutions designed to combat work hardening and improve chip breaking in stainless steel applications, providing stable and productive machining.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center border border-gray-100">
+                            <img src="https://placehold.co/150x100/FACC15/FFFFFF?text=Cast+Iron+Machining" alt="Cast Iron Machining" class="w-full h-24 object-contain mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Cast Iron</h3>
+                            <p class="text-gray-700 text-sm">Robust tools and grades for high-performance turning of various cast iron materials, ensuring excellent wear resistance and process security.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center border border-gray-100">
+                            <img src="https://placehold.co/150x100/EF4444/FFFFFF?text=Superalloys+Machining" alt="Superalloys Machining" class="w-full h-24 object-contain mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">HRSA & Titanium</h3>
+                            <p class="text-gray-700 text-sm">Specialized tools and advanced grades for challenging heat-resistant superalloys and titanium, providing superior performance in demanding conditions.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-16 bg-gradient-to-br from-gray-50 to-gray-100 p-10 rounded-xl shadow-2xl border border-gray-200">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Technical Resources & Support</h2>
+                    <p class="text-xl text-gray-700 text-center max-w-3xl mx-auto mb-10">
+                        Access our comprehensive library of technical guides, product catalogs, and application tips to optimize your machining processes.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center border border-gray-100">
+                            <i data-lucide="book-open" size="50" class="text-blue-600 mb-4"></i>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Product Catalogs</h3>
+                            <p class="text-gray-700 text-md">Download our latest catalogs for detailed specifications and ordering information on all our turning tools.</p>
+                            <a href="#" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200">Download →</a>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center border border-gray-100">
+                            <i data-lucide="file-text" size="50" class="text-green-600 mb-4"></i>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Application Guides</h3>
+                            <p class="text-gray-700 text-md">Expert guides on optimizing turning parameters, troubleshooting common issues, and best practices for various materials.</p>
+                            <a href="#" class="inline-block mt-4 text-green-600 hover:text-green-800 font-semibold transition-colors duration-200">Read Guides →</a>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 flex flex-col items-center text-center border border-gray-100">
+                            <i data-lucide="webcam" size="50" class="text-purple-600 mb-4"></i>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Webinars & Tutorials</h3>
+                            <p class="text-gray-700 text-md">Watch video tutorials and recordings of our expert webinars on advanced turning techniques and new product features.</p>
+                            <a href="#" class="inline-block mt-4 text-purple-600 hover:text-purple-800 font-semibold transition-colors duration-200">Watch Now →</a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        `;
+
+        // About Us Page Content HTML
+        const aboutUsPageHtml = `
+            <main class="container mx-auto my-12 p-4">
+                ${createStaticBannerHtml(
+                    "About SRC😎😎: Innovating Turning Solutions",
+                    "Driven by a legacy of precision engineering, we are committed to advancing machining technology and empowering industries worldwide."
+                )}
+
+                <section class="mt-16 bg-white p-10 rounded-xl shadow-2xl border border-gray-200">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Our Story & Mission</h2>
+                    <div class="flex flex-col md:flex-row items-center md:space-x-10">
+                        <div class="md:w-1/2 mb-8 md:mb-0">
+                            <img src="https://placehold.co/700x450/E0E7FF/4338CA?text=Precision+Manufacturing" alt="Precision Manufacturing Facility" class="rounded-xl shadow-xl w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/700x450/E0E7FF/4338CA?text=Image+Not+Found';">
+                        </div>
+                        <div class="md:w-1/2 text-gray-700 leading-relaxed text-lg">
+                            <p class="mb-6">
+                                Founded in 20XX, SRC😎😎 emerged from a deep understanding of manufacturing challenges and a passion for precision. Our journey began with a focus on developing superior turning tools that not only meet but exceed the rigorous demands of modern machining. We quickly established ourselves as a reliable partner, known for our innovative designs and commitment to quality.
+                            </p>
+                            <p class="mb-6">
+                                Our mission is to empower manufacturers globally with cutting-edge turning solutions that enhance productivity, reduce costs, and achieve unparalleled component quality. We continuously invest in research and development, pushing the boundaries of material science and tool geometry to deliver tools that perform exceptionally in diverse applications, from aerospace to automotive.
+                            </p>
+                            <p>
+                                We believe in building strong, collaborative relationships with our clients, understanding their unique needs, and providing tailored solutions that drive their success. Our dedication to technical expertise and customer support ensures that you always have a trusted partner in your machining journey.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-16 bg-gradient-to-br from-indigo-50 to-purple-50 p-10 rounded-xl shadow-2xl border border-indigo-100">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Our Vision for the Future</h2>
+                    <div class="flex flex-col md:flex-row items-center md:space-x-10">
+                        <div class="md:w-1/2 mb-8 md:mb-0">
+                            <img src="https://placehold.co/700x450/D1E7FF/0000FF?text=Future+Machining" alt="Future Machining Technology" class="rounded-xl shadow-xl w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/700x450/D1E7FF/0000FF?text=Image+Not+Found';">
+                        </div>
+                        <div class="md:w-1/2 text-gray-700 leading-relaxed text-lg">
+                            <p class="mb-6">
+                                Our vision is to be the undisputed global leader in advanced turning tools and machining solutions. We aim to be at the forefront of industrial innovation, continually developing next-generation tools that address the evolving demands of precision manufacturing. We envision a future where machining processes are more efficient, sustainable, and intelligent, driven by our cutting-edge technologies.
+                            </p>
+                            <p>
+                                We are committed to pioneering research in new materials, smart tooling, and digital manufacturing integration. By fostering a culture of relentless innovation and collaborating with industry leaders, we strive to set new benchmarks for performance and reliability, ensuring our clients achieve optimal results in their most critical applications.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-16 bg-gradient-to-br from-green-50 to-teal-50 p-10 rounded-xl shadow-2xl border border-green-100">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Our Thriving Culture: Engineering Excellence</h2>
+                    <div class="flex flex-col md:flex-row items-center md:space-x-10">
+                        <div class="md:w-1/2 text-gray-700 leading-relaxed text-lg mb-8 md:mb-0">
+                            <p class="mb-6">
+                                At SRC😎😎, our culture is built on a foundation of engineering excellence, continuous improvement, and a deep respect for craftsmanship. We cultivate an environment where innovation thrives, and every team member is encouraged to contribute their expertise to solve complex machining challenges. We believe in empowering our engineers and technicians to explore new ideas and push the boundaries of tool design.
+                            </p>
+                            <p>
+                                We foster a collaborative atmosphere where knowledge sharing and mentorship are key. Our commitment to professional development ensures that our team remains at the cutting edge of material science, manufacturing processes, and digital technologies, enabling us to deliver the highest quality tools and support to our global clientele.
+                            </p>
+                        </div>
+                        <div class="md:w-1/2">
+                            <img src="https://placehold.co/700x450/D1FADF/008000?text=Engineering+Team" alt="Engineering Team Collaboration" class="rounded-xl shadow-xl w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/700x450/D1FADF/008000?text=Image+Not+Found';">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-16 bg-gradient-to-br from-gray-50 to-gray-100 p-10 rounded-xl shadow-2xl border border-gray-200">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Our Core Values</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
+                        <div class="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 border border-gray-100">
+                            <i data-lucide="lightbulb" size="56" class="text-indigo-600 mb-4"></i>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Innovation</h3>
+                            <p class="text-gray-700 text-md">Pioneering new tool designs and manufacturing processes to deliver superior machining performance.</p>
+                        </div>
+                        <div class="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 border border-gray-100">
+                            <i data-lucide="users" size="56" class="text-green-600 mb-4"></i>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Customer Focus</h3>
+                            <p class="text-gray-700 text-md">Dedicated to understanding and exceeding client needs, providing tailored solutions and exceptional support.</p>
+                        </div>
+                        <div class="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 border border-gray-100">
+                            <i data-lucide="award" size="56" class="text-yellow-600 mb-4"></i>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Quality Excellence</h3>
+                            <p class="text-gray-700 text-md">Unyielding commitment to precision, durability, and consistent performance in every tool we produce.</p>
+                        </div>
+                        <div class="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 border border-gray-100">
+                            <i data-lucide="leaf" size="56" class="text-red-600 mb-4"></i>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Sustainability</h3>
+                            <p class="text-gray-700 text-md">Committed to environmentally responsible manufacturing and promoting sustainable machining practices.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-16 bg-gradient-to-br from-blue-50 to-indigo-50 p-10 rounded-xl shadow-2xl border border-blue-100">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Manufacturing Excellence</h2>
+                    <p class="text-xl text-gray-700 text-center max-w-3xl mx-auto mb-10">
+                        Our state-of-the-art facilities and rigorous quality control processes ensure every tool meets the highest standards of precision and reliability.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden border border-gray-100">
+                            <img src="https://placehold.co/600x400/CCE6FF/3399FF?text=Factory+Floor" alt="Modern Factory Floor" class="w-full h-56 object-cover transform hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/CCE6FF/3399FF?text=Image+Not+Found';">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-3">Advanced Production Facilities</h3>
+                                <p class="text-gray-700 text-base leading-relaxed">Leveraging the latest in CNC machining and automated production lines, our facilities ensure precision and efficiency at every stage of manufacturing.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden border border-gray-100">
+                            <img src="https://placehold.co/600x400/FFCCEE/FF33CC?text=Quality+Control" alt="Quality Control Inspection" class="w-full h-56 object-cover transform hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFCCEE/FF33CC?text=Image+Not+Found';">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-3">Rigorous Quality Assurance</h3>
+                                <p class="text-gray-700 text-base leading-relaxed">Every tool undergoes multi-stage inspections and performance testing to guarantee superior quality, consistency, and adherence to international standards.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-16 bg-white p-10 rounded-xl shadow-2xl border border-gray-200">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Meet Our Precision Engineering Team</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <div class="flex flex-col items-center text-center bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                            <img src="https://placehold.co/250x250/D1FAE5/065F46?text=Dr.+A.+Sharma" alt="Dr. Ananya Sharma - Head of R&D" class="rounded-full w-40 h-40 object-cover mb-6 border-4 border-indigo-600 ring-4 ring-indigo-200" onerror="this.onerror=null;this.src='https://placehold.co/250x250/D1FAE5/065F46?text=Image+Not+Found';">
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-2">Dr. Ananya Sharma</h3>
+                            <p class="text-indigo-700 font-medium text-lg mb-4">Head of R&D, Materials Science</p>
+                            <p class="text-gray-700 text-md leading-relaxed">Leading our groundbreaking research in advanced material composites and cutting-edge coating technologies for superior tool performance.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                            <img src="https://placehold.co/250x250/FFD1DC/FF007F?text=Eng.+R.+Kumar" alt="Eng. Rahul Kumar - Chief Tool Designer" class="rounded-full w-40 h-40 object-cover mb-6 border-4 border-purple-600 ring-4 ring-purple-200" onerror="this.onerror=null;this.src='https://placehold.co/250x250/FFD1DC/FF007F?text=Image+Not+Found';">
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-2">Eng. Rahul Kumar</h3>
+                            <p class="text-purple-700 font-medium text-lg mb-4">Chief Tool Design Engineer</p>
+                            <p class="text-gray-700 text-md leading-relaxed">Mastering tool geometry and chipbreaker design to optimize cutting forces and chip evacuation across all turning applications.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                            <img src="https://placehold.co/250x250/D1E7FF/0000FF?text=Ms.+L.+Patel" alt="Ms. Lisa Patel - Manufacturing Lead" class="rounded-full w-40 h-40 object-cover mb-6 border-4 border-green-600 ring-4 ring-green-200" onerror="this.onerror=null;this.src='https://placehold.co/250x250/D1E7FF/0000FF?text=Image+Not+Found';">
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-2">Ms. Lisa Patel</h3>
+                            <p class="text-green-700 font-medium text-lg mb-4">Head of Manufacturing Operations</p>
+                            <p class="text-gray-700 text-md leading-relaxed">Ensuring stringent quality control and efficient production processes to deliver tools of unmatched precision and consistency.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                            <img src="https://placehold.co/250x250/FCE7F3/BE185D?text=Mr.+J.+Singh" alt="Mr. John Singh - Application Specialist" class="rounded-full w-40 h-40 object-cover mb-6 border-4 border-pink-600 ring-4 ring-pink-200" onerror="this.onerror=null;this.src='https://placehold.co/250x250/FCE7F3/BE185D?text=Image+Not+Found';">
+                            <h3 class="text-3xl font-semibold text-gray-900 mb-2">Mr. John Singh</h3>
+                            <p class="text-pink-700 font-medium text-lg mb-4">Senior Application Specialist</p>
+                            <p class="text-gray-700 text-md leading-relaxed">Providing expert technical support and on-site optimization, helping clients maximize the performance of our turning tools.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-16 bg-purple-50 to-indigo-50 p-10 rounded-xl shadow-2xl border border-purple-100">
+                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">What Our Industry Partners Say</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 border border-gray-100">
+                            <i data-lucide="quote" size="48" class="text-gray-400 mb-6"></i>
+                            <p class="italic text-gray-700 text-xl leading-relaxed mb-6">
+                                "SRC😎😎's turning inserts have significantly improved our productivity and tool life in machining tough alloys. Their technical support is unparalleled, truly a game-changer for our production line."
+                            </p>
+                            <p class="font-semibold text-gray-900 text-lg">- Arjun Mehta, Production Manager at Apex Engineering</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 border border-gray-100">
+                            <i data-lucide="quote" size="48" class="text-gray-400 mb-6"></i>
+                            <p class="italic text-gray-700 text-xl leading-relaxed mb-6">
+                                "The precision and consistency of SRC😎😎's boring bars are exceptional. We've achieved tighter tolerances and superior surface finishes, which is critical for our aerospace components. Highly recommend their innovative solutions!"
+                            </p>
+                            <p class="font-semibold text-gray-900 text-lg">- Priya Singh, Chief Engineer at AeroPrecision Inc.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        `;
+
+        // Function to load page content
+        function loadPage(pageName) {
+            const mainContentDiv = document.getElementById('main-content');
+            let content = '';
+            let buttons = document.querySelectorAll('nav button');
+
+            // Reset active styles
+            buttons.forEach(button => {
+                button.classList.remove('bg-indigo-600', 'text-white', 'shadow-md');
+                button.classList.add('text-gray-300', 'hover:bg-gray-700', 'hover:text-white', 'hover:shadow-sm');
+            });
+
+            // Set content and active style
+            if (pageName === 'home') {
+                content = homePageHtml;
+                document.getElementById('nav-home').classList.add('bg-indigo-600', 'text-white', 'shadow-md');
+                document.getElementById('nav-home').classList.remove('text-gray-300', 'hover:bg-gray-700', 'hover:text-white', 'hover:shadow-sm');
+            } else if (pageName === 'tools') { // Changed from 'services' to 'tools'
+                content = toolsPageHtml;
+                document.getElementById('nav-tools').classList.add('bg-indigo-600', 'text-white', 'shadow-md');
+                document.getElementById('nav-tools').classList.remove('text-gray-300', 'hover:bg-gray-700', 'hover:text-white', 'hover:shadow-sm');
+            } else if (pageName === 'about') {
+                content = aboutUsPageHtml;
+                document.getElementById('nav-about').classList.add('bg-indigo-600', 'text-white', 'shadow-md');
+                document.getElementById('nav-about').classList.remove('text-gray-300', 'hover:bg-gray-700', 'hover:text-white', 'hover:shadow-sm');
+            }
+            mainContentDiv.innerHTML = content;
+            renderLucideIcons(); // Re-render Lucide icons after content is loaded
+
+            // If on the home page, initialize Rive animation
+            if (pageName === 'home') {
+                initRiveAnimation();
+            }
+        }
+
+        // Event Listeners for Navigation Buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('nav-home').addEventListener('click', () => loadPage('home'));
+            document.getElementById('nav-tools').addEventListener('click', () => loadPage('tools')); // Changed from 'services' to 'tools'
+            document.getElementById('nav-about').addEventListener('click', () => loadPage('about'));
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Load the home page by default
+            loadPage('home');
+
+            // Initial rendering of Lucide icons (already called by loadPage)
+            // initRiveAnimation() is also called by loadPage('home')
+        });
+    </script>
+</body>
+</html>
