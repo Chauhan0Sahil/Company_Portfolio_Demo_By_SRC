@@ -3,1060 +3,2205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRC😎😎 Precision Turning Tools - Global Leader in Machining Solutions</title>
-    <link rel="icon" type="image/png" href="https://placehold.co/32x32/indigo/white?text=S" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@0.395.0"></script>
-    <script src="https://unpkg.com/@rive-app/canvas@2.17.3/rive.min.js"></script>
+    <title>ENGINECH | Modern Industrial Cutting Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Custom Animations */
-        @keyframes fadeInDown {
-          from { opacity: 0; transform: translateY(-20px); }
-          to { opacity: 1; transform: translateY(0); }
+        /* Modern Industrial Theme Variables */
+        :root {
+            --primary: #002856; /* Dark Blue - Core Brand */
+            --secondary: #e31937; /* Red - Accent / Call to Action */
+            --accent: #008cff; /* Brighter Blue - Modern Accent */
+            --dark: #121212; /* Near Black for Deep contrast */
+            --light: #f5f8fc; /* Off-white / Light Grey for backgrounds */
+            --text-color: #333;
+            --subtle-gray: #e0e0e0;
+            --shadow-light: 0 5px 20px rgba(0,0,0,0.05);
+            --shadow-medium: 0 10px 40px rgba(0,0,0,0.1);
+
+            /* Typography */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
         }
 
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+        /* Base Styles - Clean & Modern */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        @keyframes pulseSlow {
-          0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.05); opacity: 0.8; }
+        body {
+            font-family: var(--font-body);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            background: var(--light); /* Overall light background */
         }
 
-        @keyframes bounceSlow {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--primary);
+            line-height: 1.2;
         }
 
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
+        a {
+            text-decoration: none;
+            color: var(--accent);
+            transition: color 0.3s ease;
         }
 
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
+        a:hover {
+            color: var(--secondary);
         }
 
-        .animate-fade-in-down { animation: fadeInDown 0.8s ease-out forwards; }
-        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .animate-pulse-slow { animation: pulseSlow 2s infinite ease-in-out; }
-        .animate-bounce-slow { animation: bounceSlow 1.5s infinite ease-in-out; }
-        .animate-slide-in-left { animation: slideInLeft 1s ease-out forwards; }
-        .animate-slide-in-right { animation: slideInRight 1s ease-out forwards; }
-
-
-        /* Custom pattern for banners */
-        .bg-pattern {
-          background-size: 60px 60px;
-          background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule=\'evenodd\'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zm0 30v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 30v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0-30V0H4v4H0v2h4v4h2V6H4V4H0zm0 30v-4H4v4H0v2h4v4h2v-4h4v-2H6zm0 30v-4H4v4H0v2h4v4h2v-4h4v-2H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        /* Modern Navbar */
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px); /* Subtle blur for modern feel */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow-light);
+            height: 90px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--subtle-gray); /* Lighter border */
         }
 
-        /* Styling for the Rive canvas to ensure it fills the container */
-        #rive-canvas {
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 4%; /* Slightly more subtle padding */
+            max-width: 1600px; /* Wider max width for more spacious feel */
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.5px; /* Tighter letter spacing */
+            flex-shrink: 0;
+            margin-right: 30px; /* Space for search */
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .logo img {
+            height: 55px; /* Slightly smaller logo */
+            margin-right: 12px;
+            border-radius: 5px; /* Slight roundness */
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            max-width: 450px; /* Wider search bar */
+            border: 1px solid var(--subtle-gray); /* Softer border */
+            border-radius: 6px; /* More modern radius */
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Subtle inner shadow */
+        }
+
+        .search-bar input {
+            padding: 12px 18px;
+            border: none;
+            width: 100%;
+            font-size: 15px;
+            outline: none;
+            background: #fff;
+            color: var(--text-color);
+        }
+
+        .search-bar input::placeholder {
+            color: #888;
+        }
+
+        .search-bar button {
+            background: var(--primary); /* Use primary for search button */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .search-bar button:hover {
+            background: var(--accent); /* Accent on hover */
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px; /* Increased spacing */
+            flex-shrink: 0;
+            margin-left: 40px; /* Space from search bar */
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600; /* Medium bold */
+            font-size: 15px;
+            padding: 10px 0; /* Vertical padding only */
+            position: relative;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li.active a {
+            color: var(--secondary);
+        }
+
+        .nav-links li a:hover::after,
+        .nav-links li.active a::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--primary);
+            margin-left: 25px;
+        }
+
+        /* Hero Banner Slider - Modern & Engaging */
+        .hero-slider {
+            height: 90vh; /* Make it taller */
+            min-height: 700px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 90px;
+            background: var(--dark); /* Dark background behind slides */
+        }
+
+        .slider-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+            display: flex; /* Use flex for content positioning */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide img {
             width: 100%;
             height: 100%;
-            display: block; /* Ensures no extra space around the canvas */
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.7) saturate(1.1); /* Slightly darker and more vibrant */
+            transition: filter 0.5s ease;
         }
 
-        /* Basic scrollbar styling (optional, for aesthetics) */
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0,40,86,0.85) 0%, rgba(0,40,86,0.6) 50%, rgba(0,0,0,0.3) 100%); /* More dynamic overlay */
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            text-align: left;
         }
 
-        /* For mobile navigation toggle */
-        @media (max-width: 767px) {
-            .navbar-menu {
+        .slide-content {
+            max-width: 800px; /* Wider content area */
+            color: white;
+            z-index: 2; /* Ensure content is above overlay */
+        }
+
+        .slide-content h1 {
+            font-size: 4.5rem; /* Larger, bolder headline */
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: white; /* Headline always white */
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .slide-content p {
+            font-size: 1.4rem; /* Larger paragraph text */
+            margin-bottom: 40px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 16px 40px; /* Larger buttons */
+            text-decoration: none;
+            border-radius: 8px; /* More rounded */
+            font-weight: 700;
+            margin-right: 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 17px;
+            border: none; /* No border for solid button */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* Deeper shadow */
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white; /* White border for outline */
+            box-shadow: none; /* No shadow for outline */
+        }
+
+        .btn:hover {
+            background: var(--primary); /* Changed hover to primary */
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: none;
+            border-color: var(--accent); /* Accent on hover */
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 40px; /* Lower dots */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 10;
+            gap: 12px;
+        }
+
+        .slider-dot {
+            width: 14px; /* Slightly smaller dots */
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .slider-dot.active {
+            background: var(--accent); /* Accent for active dot */
+            transform: scale(1.3);
+            border-color: white;
+        }
+
+        /* Generic Section Styling - Modernized */
+        .section-padding {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 3.5rem; /* Larger titles */
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px; /* Space for underline */
+            color: var(--dark); /* Darker for contrast */
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px; /* Wider underline */
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            max-width: 900px; /* Wider subtitle area */
+            margin: 0 auto 80px; /* More space below */
+            color: #555;
+            font-size: 1.25rem; /* Larger subtitle text */
+            line-height: 1.8;
+        }
+
+        /* Our Services Section - Sleeker Cards */
+        #services {
+            background: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly wider min width */
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .service-item {
+            background: white;
+            padding: 40px;
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: var(--shadow-medium); /* Deeper shadow */
+            text-align: left;
+            transition: all 0.4s ease;
+            border-left: 6px solid var(--primary); /* Thicker border */
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+            z-index: -1;
+            opacity: 0.1; /* Subtle overlay effect */
+        }
+
+        .service-item:hover {
+            transform: translateY(-15px); /* More pronounced lift */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: var(--secondary); /* Red on hover */
+        }
+        .service-item:hover::before {
+            transform: translateX(0%);
+        }
+
+        .service-item i {
+            font-size: 4rem; /* Larger icons */
+            color: var(--secondary); /* Red for icons */
+            margin-bottom: 25px;
+        }
+
+        .service-item h3 {
+            font-size: 2rem; /* Larger headings */
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .service-item p {
+            font-size: 1.05rem; /* Slightly larger text */
+            color: #555;
+            line-height: 1.7;
+        }
+        .service-item:hover h3, .service-item:hover p, .service-item:hover i {
+            color: var(--primary); /* Keep text primary, icons red on hover */
+        }
+
+
+        /* Precision 3D Rotating Carousel - Smaller & Smoother */
+        .product-showcase {
+            padding-top: 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: #fff; /* White background for contrast */
+            padding-bottom: 100px;
+            border-top: 1px solid var(--subtle-gray);
+        }
+        
+        .product-showcase .section-title {
+            margin-bottom: 20px;
+        }
+
+        .showcase-container {
+            perspective: 1000px; /* Slightly less extreme perspective */
+            height: 500px; /* Shorter height for the container */
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1000px; /* Max width for carousel area */
+            margin-top: 50px;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate3D 25s infinite linear; /* Faster, smoother animation */
+            transition: transform 0.8s ease-in-out; /* Smooth transition on manual drag/pause */
+        }
+
+        .carousel.paused {
+            animation-play-state: paused;
+        }
+
+        .product {
+            position: absolute;
+            width: 280px; /* Smaller product cards */
+            height: 400px; /* Smaller height */
+            left: 50%;
+            top: 50%;
+            margin-left: -140px; /* Half of new width */
+            margin-top: -200px; /* Half of new height */
+            transform-origin: center;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1); /* Refined shadow */
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+            border: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Adjustments for the 8 products, making them less "deep" */
+        .product:nth-child(1) { transform: rotateY(calc(0 * 45deg)) translateZ(350px); }
+        .product:nth-child(2) { transform: rotateY(calc(1 * 45deg)) translateZ(350px); }
+        .product:nth-child(3) { transform: rotateY(calc(2 * 45deg)) translateZ(350px); }
+        .product:nth-child(4) { transform: rotateY(calc(3 * 45deg)) translateZ(350px); }
+        .product:nth-child(5) { transform: rotateY(calc(4 * 45deg)) translateZ(350px); }
+        .product:nth-child(6) { transform: rotateY(calc(5 * 45deg)) translateZ(350px); }
+        .product:nth-child(7) { transform: rotateY(calc(6 * 45deg)) translateZ(350px); }
+        .product:nth-child(8) { transform: rotateY(calc(7 * 45deg)) translateZ(350px); }
+
+
+        .product:hover {
+            transform: translateZ(380px) scale(1.05); /* Subtle scale up */
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent); /* Accent color for badge */
+            color: white;
+            padding: 5px 12px;
+            border-radius: 3px; /* Sharper corners */
+            font-size: 13px;
+            font-weight: bold;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px; /* Shorter image height */
+            object-fit: cover;
+            object-position: center;
+            border-bottom: 1px solid #f8f8f8;
+        }
+
+        .product-info {
+            padding: 20px; /* Slightly less padding */
+            text-align: left;
+            flex-grow: 1; /* Allows it to take remaining space */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Push button to bottom */
+        }
+
+        .product-info h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .product-info p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            flex-grow: 1; /* Allows description to grow */
+        }
+
+        .product-info .btn {
+            padding: 10px 20px;
+            font-size: 13px;
+            margin-top: 10px;
+            display: inline-block;
+            align-self: flex-start; /* Align button to start */
+        }
+
+        @keyframes rotate3D {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        /* About Us Section - Clean & Balanced */
+        #about {
+            background: white;
+            border-top: 1px solid var(--subtle-gray);
+            border-bottom: 1px solid var(--subtle-gray);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 60px; /* More space */
+            text-align: left;
+            margin-top: 50px;
+            align-items: center; /* Vertically align sections */
+        }
+
+        .about-text, .about-ceo-card {
+            flex: 1;
+            min-width: 450px; /* Increase min-width for larger screens */
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+        .about-text h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent); /* Accent underline */
+            border-radius: 2px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .about-ceo-card {
+            background: var(--light); /* Light background for card */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-light); /* Lighter shadow */
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            border-right: 5px solid var(--accent); /* Accent border */
+        }
+
+        .ceo-photo {
+            width: 130px; /* Slightly larger photo */
+            height: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--primary); /* Primary border */
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .ceo-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ceo-info h4 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .ceo-info span {
+            display: block;
+            font-size: 1.15rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .ceo-info p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Industrial Metrics Dashboard - Modernized */
+        .metrics-section {
+            background: var(--primary);
+            color: white;
+            padding: 100px 5%;
+            text-align: center;
+            position: relative;
+        }
+        
+        .metrics-section .section-title {
+            color: white;
+            margin-bottom: 80px;
+        }
+        .metrics-section .section-title::after {
+            background: var(--accent); /* Accent for white background sections */
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .metric-item {
+            padding: 40px 30px;
+            background: rgba(255,255,255,0.12); /* Slightly more opaque */
+            border-radius: 10px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .metric-item.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .metric-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+        }
+
+        .metric-value {
+            font-size: 4.5rem; /* Larger values */
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--accent);
+            font-family: var(--font-heading);
+        }
+
+        .metric-label {
+            font-size: 1.4rem; /* Larger labels */
+            opacity: 0.95;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Authorized Distributors Section - Modern Cards */
+        .partners-section {
+            background: var(--light);
+            border-top: 1px solid var(--subtle-gray);
+        }
+        
+        .partners-section .section-title {
+            margin-bottom: 20px;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); /* Wider cards */
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .partner-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            border-left: 6px solid var(--secondary); /* Thicker accent border */
+            text-align: left;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+        }
+
+        .partner-logo {
+            width: 110px; /* Slightly smaller logos */
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background: #fdfdfd;
+            border-radius: 8px;
+            margin-right: 30px;
+            flex-shrink: 0;
+            border: 1px solid #eee;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .partner-info h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .partner-info p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .partner-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .partner-link i {
+            margin-left: 8px;
+            font-size: 14px;
+        }
+
+        .partner-link:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* Industry-Leading Clients - Smoother Scroll */
+        .clients-section {
+            background: white;
+            border-top: 1px solid var(--subtle-gray);
+        }
+        
+        .clients-section .section-title {
+            margin-bottom: 70px;
+        }
+
+        .clients-slider {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 120px;
+            animation: client-scroll 25s linear infinite; /* Smoother, slightly faster scroll */
+            white-space: nowrap; /* Prevent items from wrapping */
+            padding: 0 20px;
+        }
+
+        .clients-slider:hover {
+            animation-play-state: paused;
+        }
+
+        .client-logo {
+            flex: 0 0 auto; /* No fixed width, lets content dictate */
+            padding: 0 40px; /* Wider spacing between logos */
+            filter: grayscale(80%); /* More subtle grayscale */
+            opacity: 0.7;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .client-logo img {
+            max-width: 180px; /* Max width for logos */
+            max-height: 90px; /* Max height for logos */
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .client-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05); /* Subtle scale */
+        }
+
+        /* Duplicate the content for smooth infinite loop */
+        .clients-slider .client-logo:nth-child(n+7) { /* Assumes 6 initial logos */
+            /* These are the duplicated ones for the loop, no specific style needed */
+        }
+
+        @keyframes client-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Scrolls half the track (one set of logos) */
+        }
+
+
+        /* Product Modal - Refined Look */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85); /* Slightly darker overlay */
+            z-index: 2000;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex; /* Use flex to center */
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 50px auto;
+            padding: 50px;
+            border-radius: 12px; /* More rounded */
+            max-width: 1100px; /* Wider modal */
+            position: relative;
+            transform: translateY(30px); /* Smaller starting position */
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            opacity: 0;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 32px; /* Larger close button */
+            cursor: pointer;
+            color: #666; /* Softer color */
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--secondary);
+            transform: rotate(90deg);
+        }
+
+        .modal-product {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start; /* Align top */
+        }
+
+        .modal-image {
+            flex: 1;
+            min-width: 40%; /* Ensure image takes significant space */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal-info {
+            flex: 1.5; /* Info takes more space */
+        }
+
+        .modal-info h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 2.5rem; /* Larger title */
+            font-weight: 700;
+        }
+
+        .modal-info p {
+            margin-bottom: 30px;
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .specs {
+            margin: 30px 0;
+            list-style: none;
+            border-top: 1px solid var(--subtle-gray); /* Clean separator */
+            padding-top: 20px;
+        }
+
+        .specs li {
+            margin-bottom: 12px;
+            display: flex;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #eee;
+            font-size: 1rem;
+        }
+
+        .specs li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .specs li span:first-child {
+            font-weight: 700;
+            width: 200px; /* Wider label column */
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .specs li span:last-child {
+            flex: 1;
+            color: #444;
+        }
+
+        /* Heavy-Duty Footer - Modernized */
+        footer {
+            background: var(--dark); /* Darker footer */
+            color: white;
+            padding: 80px 0 40px; /* Reduced top padding */
+            position: relative;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px; /* Reduced gap */
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 25px; /* Reduced margin */
+            font-size: 1.4rem; /* Slightly smaller title */
+            position: relative;
+            padding-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        .footer-col h3:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px; /* Shorter underline */
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #bbb; /* Lighter text color */
+            text-decoration: none;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            font-size: 15px;
+            display: inline-block; /* For padding-left effect */
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+            padding-left: 8px; /* Slight indent on hover */
+        }
+
+        .contact-info {
+            color: #bbb;
+        }
+
+        .contact-info p {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 15px;
+        }
+
+        .contact-info i {
+            margin-right: 12px;
+            color: var(--accent); /* Accent for icons */
+            font-size: 17px;
+            margin-top: 2px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px; /* Smaller gap */
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            color: white;
+            background: rgba(255,255,255,0.08); /* More subtle background */
+            width: 40px; /* Smaller icons */
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 17px;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 35px;
+            margin-top: 60px;
+            border-top: 1px solid #333; /* Darker border */
+            color: #888; /* Softer copyright text */
+            font-size: 14px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 90px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 90px);
+            background: white;
+            z-index: 999;
+            padding: 30px;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu ul li {
+            margin-bottom: 0; /* No bottom margin */
+            border-bottom: 1px solid var(--subtle-gray); /* Clean border */
+        }
+        .mobile-menu ul li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu ul li a {
+            display: block;
+            padding: 18px 15px; /* Slightly less padding */
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: var(--secondary);
+            padding-left: 20px;
+        }
+
+        /* Responsive Adjustments - Modern breakpoints */
+        @media (max-width: 1200px) {
+            .hero-slider {
+                height: 75vh;
+                min-height: 650px;
+            }
+
+            .slide-content h1 {
+                font-size: 3.8rem;
+            }
+            .slide-content p {
+                font-size: 1.2rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .partner-card {
+                min-width: 320px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
                 display: none;
+            }
+            
+            .search-bar {
+                margin: 0 20px; /* Adjust margin */
+                max-width: none; /* Allow it to take more space */
+            }
+
+            .search-bar button {
+                padding: 10px 15px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .modal-product {
                 flex-direction: column;
-                width: 100%;
-                background-color: #1a202c; /* Darker background for mobile menu */
-                position: absolute;
-                top: 100%;
-                left: 0;
-                padding: 1rem 0;
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                gap: 30px;
+                text-align: center; /* Center modal content on mobile */
             }
-            .navbar-menu.active {
-                display: flex;
+            
+            .modal-content {
+                padding: 30px;
+                margin: 30px 20px; /* Adjust margins */
             }
-            .navbar-menu li {
-                width: 100%;
+            .modal-info .btn {
+                align-self: center; /* Center button */
+            }
+            .specs li span:first-child {
+                width: 150px; /* Adjust spec label width */
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-ceo-card {
+                flex-direction: column;
                 text-align: center;
-                margin: 0.5rem 0;
+                gap: 20px;
             }
-            .navbar-menu button {
-                width: calc(100% - 2rem); /* Full width with padding */
-                margin: 0 auto;
-                justify-content: center;
+            .ceo-photo {
+                margin-bottom: 15px;
+            }
+            .about-text h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: space-between;
+                gap: 15px;
+            }
+            .logo {
+                font-size: 24px;
+            }
+
+            .logo img {
+                height: 40px;
+                margin-right: 8px;
+            }
+            .search-bar {
+                margin: 0 10px;
+                width: 100%;
+                max-width: 250px; /* Limit search bar width on smaller screens */
+            }
+            .search-bar input {
+                padding: 10px 12px;
+            }
+            .search-bar button {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+
+            .hero-slider {
+                height: 65vh;
+                min-height: 550px;
+            }
+
+            .slide-content h1 {
+                font-size: 3rem;
+            }
+
+            .slide-content p {
+                font-size: 1.05rem;
+            }
+
+            .btn {
+                padding: 14px 30px;
+                font-size: 15px;
+            }
+
+            .section-title {
+                font-size: 2.8rem;
+            }
+            .section-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 60px;
+            }
+
+            .showcase-container {
+                height: 400px; /* Even shorter for mobile */
+            }
+
+            .product {
+                width: 240px; /* Smaller product cards */
+                height: 360px;
+                margin-left: -120px;
+                margin-top: -180px;
+            }
+            /* Re-adjust translateZ for smaller product size if needed */
+            .product:nth-child(1) { transform: rotateY(calc(0 * 45deg)) translateZ(300px); }
+            .product:nth-child(2) { transform: rotateY(calc(1 * 45deg)) translateZ(300px); }
+            .product:nth-child(3) { transform: rotateY(calc(2 * 45deg)) translateZ(300px); }
+            .product:nth-child(4) { transform: rotateY(calc(3 * 45deg)) translateZ(300px); }
+            .product:nth-child(5) { transform: rotateY(calc(4 * 45deg)) translateZ(300px); }
+            .product:nth-child(6) { transform: rotateY(calc(5 * 45deg)) translateZ(300px); }
+            .product:nth-child(7) { transform: rotateY(calc(6 * 45deg)) translateZ(300px); }
+            .product:nth-child(8) { transform: rotateY(calc(7 * 45deg)) translateZ(300px); }
+
+            .metrics-section .section-title,
+            .clients-section .section-title,
+            .partners-section .section-title {
+                font-size: 2.2rem;
+            }
+
+            .metric-value {
+                font-size: 3.5rem;
+            }
+
+            .client-logo {
+                padding: 0 30px;
+            }
+
+            .partner-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+            }
+
+            .partner-logo {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .client-logo {
+                padding: 0 20px;
+            }
+
+            .slide-content {
+                padding: 0 5%;
+            }
+            .slide-content h1 {
+                font-size: 2.2rem;
+            }
+            .slide-content p {
+                font-size: 0.95rem;
+            }
+            .btn {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            .search-bar {
+                flex-grow: 0;
+                width: 140px;
+                min-width: unset; /* Allow to shrink more */
+            }
+            .navbar {
+                padding: 0 15px;
+            }
+            .section-padding {
+                padding: 80px 4%;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .about-text, .about-ceo-card {
+                min-width: unset;
             }
         }
     </style>
 </head>
-<body class="min-h-screen bg-gray-100 font-sans antialiased text-gray-800">
+<body>
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo">
+                <img src="https://via.placeholder.com/60x60/002856/FFFFFF?text=ENGINECH_LOGO" alt="ENGINECH Logo">
+                ENGINE<span>CH</span>
+            </a>
 
-    <header class="bg-gradient-to-r from-gray-900 to-gray-800 text-white p-4 shadow-2xl sticky top-0 z-50">
-      <div class="container mx-auto flex items-center justify-between flex-wrap">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
-          <a href="#" id="site-logo" class="font-extrabold text-3xl tracking-wide rounded-lg p-2 bg-indigo-600 hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105">SRC😎😎</a>
-        </div>
-
-        <div class="block md:hidden">
-            <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-200 border-gray-400 hover:text-white hover:border-white">
-                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-            </button>
-        </div>
-
-        <div class="w-full block flex-grow md:flex md:items-center md:w-auto">
-            <div class="relative flex-grow my-2 md:my-0 md:mr-6">
-                <input
-                    type="text"
-                    placeholder="Search tools and solutions..."
-                    class="w-full pl-10 pr-4 py-2 rounded-full bg-gray-700 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-gray-600 transition-colors duration-200"
-                />
-                <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size="20"></i>
+            <div class="search-bar">
+                <input type="text" placeholder="Search products...">
+                <button aria-label="Search"><i class="fas fa-search"></i></button>
             </div>
 
-            <div class="flex items-center space-x-4 my-2 md:my-0 md:ml-auto">
-                <a href="#" class="relative text-gray-300 hover:text-indigo-400 cursor-pointer transition-colors duration-200 transform hover:scale-110" title="Notifications">
-                    <i data-lucide="bell" size="24"></i>
-                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
-                </a>
-                <a href="#" class="text-gray-300 hover:text-indigo-400 cursor-pointer transition-colors duration-200 transform hover:scale-110" title="User Account">
-                    <i data-lucide="user" size="24"></i>
-                </a>
-                <a href="#" class="text-gray-300 hover:text-indigo-400 cursor-pointer transition-colors duration-200 transform hover:scale-110" title="Shopping Cart">
-                    <i data-lucide="shopping-cart" size="24"></i>
-                </a>
+            <ul class="nav-links">
+                <li class="active"><a href="#home">Home</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact-footer">Contact</a></li>
+            </ul>
+
+            <div class="mobile-menu-btn" aria-label="Toggle Mobile Menu">
+                <i class="fas fa-bars"></i>
             </div>
         </div>
 
-        <nav class="w-full flex justify-center md:justify-end mt-4 md:mt-0 navbar-menu" id="navbar-menu">
-          <ul class="flex flex-wrap space-x-6 md:flex-row md:space-x-6 md:space-y-0">
-            <li>
-              <button data-section="home" class="flex items-center px-4 py-2 rounded-full text-base font-semibold transition-all duration-300 text-gray-300 hover:bg-gray-700 hover:text-white hover:shadow-sm">
-                <i data-lucide="home" class="mr-2" size="18"></i> Home
-              </button>
-            </li>
-            <li>
-              <button data-section="tools" class="flex items-center px-4 py-2 rounded-full text-base font-semibold transition-all duration-300 text-gray-300 hover:bg-gray-700 hover:text-white hover:hover:shadow-sm">
-                <i data-lucide="wrench" class="mr-2" size="18"></i> Turning Tools
-              </button>
-            </li>
-            <li>
-              <button data-section="applications" class="flex items-center px-4 py-2 rounded-full text-base font-semibold transition-all duration-300 text-gray-300 hover:bg-gray-700 hover:text-white hover:shadow-sm">
-                <i data-lucide="settings" class="mr-2" size="18"></i> Applications
-              </button>
-            </li>
-            <li>
-              <button data-section="resources" class="flex items-center px-4 py-2 rounded-full text-base font-semibold transition-all duration-300 text-gray-300 hover:bg-gray-700 hover:text-white hover:shadow-sm">
-                <i data-lucide="book-open" class="mr-2" size="18"></i> Resources
-              </button>
-            </li>
-            <li>
-              <button data-section="about" class="flex items-center px-4 py-2 rounded-full text-base font-semibold transition-all duration-300 text-gray-300 hover:bg-gray-700 hover:text-white hover:shadow-sm">
-                <i data-lucide="info" class="mr-2" size="18"></i> About Us
-              </button>
-            </li>
-            <li>
-                <button data-section="contact" class="flex items-center px-4 py-2 rounded-full text-base font-semibold transition-all duration-300 text-gray-300 hover:bg-gray-700 hover:text-white hover:shadow-sm">
-                    <i data-lucide="mail" class="mr-2" size="18"></i> Contact
-                </button>
-            </li>
-          </ul>
-        </nav>
-      </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact-footer">Contact</a></li>
+            </ul>
+        </div>
     </header>
 
-    <div id="main-content"></div>
+    <section class="hero-slider" id="home">
+        <div class="slider-track" id="sliderTrack">
+            <div class="slide active">
+                <img src="https://images.unsplash.com/photo-1596791242379-4d6d67873527?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHw0fHxoaWdoJTIwdGVjaCUyMG1hY2hpbmVyeSUyMHByZWNpc2lvbnxlbnwwfHx8fDE3MjE4Nzc2OTZ8MA&ixlib=rb-4.0.3&q=80&w=1920" alt="Precision Industrial Machinery">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h1>ENGINEERING TOMORROW'S INDUSTRY TODAY</h1>
+                        <p>Leading the way in advanced industrial cutting solutions with unparalleled precision and efficiency.</p>
+                        <a href="#services" class="btn">Explore Solutions</a>
+                        <a href="#contact-footer" class="btn btn-outline">Get a Quote</a>
+                    </div>
+                </div>
+            </div>
 
-    <footer class="bg-gray-900 text-white p-8 mt-12 shadow-inner">
-      <div class="container mx-auto text-center text-gray-400">
-        <p class="text-lg">© <span id="current-year"></span> SRC😎😎. All rights reserved. <span class="block mt-2 md:inline-block md:ml-4">Powered by Innovation.</span></p>
-        <p class="mt-3 text-md">Precision crafted for the future of machining.</p>
-        <div class="flex flex-wrap justify-center space-x-6 mt-6">
-          <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors duration-200 text-sm md:text-base">Privacy Policy</a>
-          <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors duration-200 text-sm md:text-base">Terms of Service</a>
-          <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors duration-200 text-sm md:text-base">Sitemap</a>
-          <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors duration-200 text-sm md:text-base">Cookie Policy</a>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1550570889-7009903b44b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwxNXx8aW5kdXN0cmlhbCUyMGF1dG9tYXRpb24lMjByb2JvdGljc3xlbnwwfHx8fDE3MjE4Nzc3MjV8MA&ixlib=rb-4.0.3&q=80&w=1920" alt="Automated Manufacturing Process">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h1>REDEFINING MANUFACTURING EFFICIENCY</h1>
+                        <p>Leveraging smart technologies and automated systems for seamless production and superior output.</p>
+                        <a href="#services" class="btn">Discover Automation</a>
+                        <a href="#about" class="btn btn-outline">Our Vision</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1621243886427-935f8e6c40a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHw0OXx8aW5kdXN0cmlhbCUyMGluZmluaXRlJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3MjE4Nzg2NDd8MA&ixlib=rb-4.0.3&q=80&w=1920" alt="Sustainable Manufacturing">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h1>INNOVATION FOR A SMARTER FUTURE</h1>
+                        <p>Developing eco-conscious solutions that minimize waste and maximize resource utilization in production.</p>
+                        <a href="#services" class="btn">Learn More</a>
+                        <a href="#contact-footer" class="btn btn-outline">Sustainability Report</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1563200782-b7b25868e4de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHw3OXx8Z2xvYmFsJTIwaW5kdXN0cnl8ZW58MHx8fHwxNzIxODc4NjczfDA&ixlib=rb-4.0.3&q=80&w=1920" alt="Global Industrial Network">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h1>GLOBAL LEADERSHIP, LOCAL SUPPORT</h1>
+                        <p>Our expansive network ensures world-class industrial cutting solutions are always within your reach.</p>
+                        <a href="#partners" class="btn">Find a Partner</a>
+                        <a href="#contact-footer" class="btn btn-outline">Connect With Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1521737711867-ee1fd7e802a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHw2Mnx8aW5kdXN0cnklMjBwZW9wbGUlMjB0ZWNobm9sb2d5fGVufDB8fHx8MTcyMTg3ODY1OXww&ixlib=rb-4.0.3&q=80&w=1920" alt="Engineers Collaborating">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h1>POWERING PEOPLE WITH INTELLIGENT TOOLS</h1>
+                        <p>Designing intuitive and powerful tools that enhance human capability and operational safety.</p>
+                        <a href="#about" class="btn">Our Team</a>
+                        <a href="#contact-footer" class="btn btn-outline">Join Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHw2NXx8aW5kdXN0cnklMjBkYXRhJTIwYW5hbHlzaXMlMjBhSXxlbnwwfHx8fDE3MjE4Nzg2NTN8MA&ixlib=rb-4.0.3&q=80&w=1920" alt="Industrial Data Analytics">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h1>NAVIGATING INDUSTRY 4.0 WITH CONFIDENCE</h1>
+                        <p>Empowering factories with data-driven insights and AI-powered solutions for predictive maintenance.</p>
+                        <a href="#services" class="btn">Digital Services</a>
+                        <a href="#contact-footer" class="btn btn-outline">Request Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1596791242379-4d6d67873527?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHw3MXx8aW5kdXN0cmlhbCUyMHRvb2xzJTIwZHVyYWJpbGl0eXxlbnwwfHx8fDE3MjE4Nzg2NTV8MA&ixlib=rb-4.0.3&q=80&w=1920" alt="Durable Cutting Tool">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h1>BUILT TO PERFORM, DESIGNED TO LAST</h1>
+                        <p>Experience the robust performance and extended lifespan of our precision-engineered tools in demanding environments.</p>
+                        <a href="#services" class="btn">Our Products</a>
+                        <a href="#contact-footer" class="btn btn-outline">Warranty Info</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHw3NHx8aW5kdXN0cnklMjBhY2hpZXZlbWVudHMlMjBzdWNjZXNzZnVsfGVufDB8fHx8MTcyMTg3ODY1OHww&ixlib=rb-4.0.3&q=80&w=1920" alt="Customer Success">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <h1>YOUR SUCCESS, OUR PRIORITY</h1>
+                        <p>Partner with ENGINECH and join countless industry leaders who trust our solutions for their most critical operations.</p>
+                        <a href="#clients" class="btn">Client Stories</a>
+                        <a href="#contact-footer" class="btn btn-outline">Talk to Sales</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="flex justify-center space-x-6 mt-6">
-          <a href="https://www.instagram.com/src.tools" target="_blank" class="text-gray-400 hover:text-pink-400 transition-colors duration-200" title="Instagram">
-            <i data-lucide="instagram" size="24"></i>
-          </a>
-          <a href="https://www.linkedin.com/company/src-tools" target="_blank" class="text-gray-400 hover:text-blue-400 transition-colors duration-200" title="LinkedIn">
-            <i data-lucide="linkedin" size="24"></i>
-          </a>
-          <a href="https://www.facebook.com/src.tools" target="_blank" class="text-gray-400 hover:text-blue-600 transition-colors duration-200" title="Facebook">
-            <i data-lucide="facebook" size="24"></i>
-          </a>
-          <a href="https://www.twitter.com/src_tools" target="_blank" class="text-gray-400 hover:text-cyan-400 transition-colors duration-200" title="Twitter">
-            <i data-lucide="twitter" size="24"></i>
-          </a>
-          <a href="https://www.youtube.com/src_tools" target="_blank" class="text-gray-400 hover:text-red-500 transition-colors duration-200" title="YouTube">
-            <i data-lucide="youtube" size="24"></i>
-          </a>
-        </div>
-        <p class="mt-8 text-sm text-gray-600">
-            Manufacturing excellence since 2005. Pioneering advanced solutions for industrial precision.
-            Our commitment to quality, innovation, and customer satisfaction drives us forward.
+
+        <div class="slider-nav" id="sliderDots">
+            </div>
+    </section>
+
+    <section class="section-padding" id="services">
+        <h2 class="section-title">Our Services & Solutions</h2>
+        <p class="section-subtitle">
+            At ENGINECH, we provide comprehensive industrial cutting solutions tailored to meet the rigorous demands of modern manufacturing. Our expertise spans across various processes and materials, driving efficiency and innovation.
         </p>
-      </div>
+
+        <div class="services-grid">
+            <div class="service-item">
+                <i class="fas fa-drafting-compass"></i>
+                <h3>Precision Tooling Design</h3>
+                <p>Expert design and engineering of bespoke cutting tools for unique application requirements, optimizing performance and efficiency.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-microchip"></i>
+                <h3>Advanced Process Optimization</h3>
+                <p>Analysis and improvement of your machining processes to enhance productivity, reduce cycle times, and extend tool life with digital insights.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-robot"></i>
+                <h3>Automation Integration Support</h3>
+                <p>Seamless integration of our cutting solutions into your automated and robotic manufacturing systems for streamlined, intelligent operations.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h3>Technical Training & Expertise</h3>
+                <p>Comprehensive training programs and dedicated technical support to empower your team with the knowledge to maximize our tools' potential.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-atom"></i>
+                <h3>Material Science Consulting</h3>
+                <p>Guidance on selecting the optimal tool materials and coatings for various workpiece materials, ensuring superior and sustainable results.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-chart-pie"></i>
+                <h3>Performance Analytics & IoT</h3>
+                <p>Leveraging real-time data and IoT sensors to monitor tool performance, predict wear, and provide actionable insights for continuous improvement.</p>
+            </div>
+        </div>
+
+        <div class="product-showcase">
+            <h2 class="section-title">Our Flagship Products</h2>
+            <p class="section-subtitle">
+                Discover our range of high-performance cutting tools designed for precision, durability, and efficiency in every cut.
+            </p>
+            <div class="showcase-container">
+                <div class="carousel" id="productCarousel">
+                    <div class="product">
+                        <span class="product-badge">New!</span>
+                        <img src="https://images.unsplash.com/photo-1618210457618-b2a6a0904128?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwyMHx8Y3V0dGluZyUyMHRvb2wlMjBhdHRhY2htZW50fGVufDB8fHx8MTcxMTExMjcwN3ww&ixlib=rb-4.0.3&q=80&w=600" alt="High-Performance End Mill">
+                        <div class="product-info">
+                            <h3>Quantum End Mill Pro</h3>
+                            <p>For superior material removal and unmatched surface finish in challenging alloys.</p>
+                            <a href="#" class="btn view-product-detail">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <span class="product-badge">Best Seller</span>
+                        <img src="https://images.unsplash.com/photo-1589998135896-1877662862a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwxOXx8ZHJpbGwlMjBiaXQlMjBjbG9zZXVwfGVufDB8fHx8MTcxMTExMjcwN3ww&ixlib=rb-4.0.3&q=80&w=600" alt="Precision Drill Bit">
+                        <div class="product-info">
+                            <h3>Aura Drill Master Series</h3>
+                            <p>Experience extreme accuracy and exceptional hole quality with advanced flute design.</p>
+                            <a href="#" class="btn view-product-detail">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="https://images.unsplash.com/photo-1621243886427-935f8e6c40a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwyMXx8dHVybmluZyUyMGluc2VydHxlbnwwfHx8fDE3MTExMTI3MDd8MA&ixlib=rb-4.0.3&q=80&w=600" alt="Advanced Turning Insert">
+                        <div class="product-info">
+                            <h3>Fusion Turning Insert</h3>
+                            <p>Optimized for high-feed turning of stainless steel and superalloys. Long tool life.</p>
+                            <a href="#" class="btn view-product-detail">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <span class="product-badge">Top Rated</span>
+                        <img src="https://images.unsplash.com/photo-1601007996362-e64906f2c7a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwyNHx8dGhyZWFkaW5nJTIwdG9vbHxlbnwwfHx8fDE3MTExMTI3MDd8MA&ixlib=rb-4.0.3&q=80&w=600" alt="Threading Mill">
+                        <div class="product-info">
+                            <h3>Helix ThreadMill Pro</h3>
+                            <p>Efficient and precise threading for internal/external applications. Reduced cycle time.</p>
+                            <a href="#" class="btn view-product-detail">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="https://images.unsplash.com/photo-1610484732103-a212e52e4b3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwyNnx8dG9vbCUyMGhvbGRlcnxlbnwwfHx8fDE3MTExMTI3MDd8MA&ixlib=rb-4.0.3&q=80&w=600" alt="Anti-Vibration Tool Holder">
+                        <div class="product-info">
+                            <h3>Dyna-Grip Tool Holder</h3>
+                            <p>Minimize chatter and improve surface finish with advanced vibration dampening.</p>
+                            <a href="#" class="btn view-product-detail">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <span class="product-badge">Eco-Certified</span>
+                        <img src="https://images.unsplash.com/photo-1618210457618-b2a6a0904128?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwyMHx8Y3V0dGluZyUyMHRvb2wlMjBhdHRhY2htZW50fGVufDB8fHx8MTcxMTExMjcwN3ww&ixlib=rb-4.0.3&q=80&w=600" alt="Cutting Fluid">
+                        <div class="product-info">
+                            <h3>Bio-Coolant Fluid</h3>
+                            <p>Environmentally friendly cutting fluid for extended tool life and superior cooling.</p>
+                            <a href="#" class="btn view-product-detail">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <img src="https://images.unsplash.com/photo-1589998135896-1877662862a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwxOXx8ZHJpbGwlMjBiaXQlMjBjbG9zZXVwfGVufDB8fHx8MTcxMTExMjcwN3ww&ixlib=rb-4.0.3&q=80&w=600" alt="Measurement Gauge">
+                        <div class="product-info">
+                            <h3>Digital Precision Gauge</h3>
+                            <p>High-accuracy measurement for quality control in demanding industrial environments.</p>
+                            <a href="#" class="btn view-product-detail">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <span class="product-badge">Smart Tool</span>
+                        <img src="https://images.unsplash.com/photo-1621243886427-935f8e6c40a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwyMXx8dHVybmluZyUyMGluc2VydHxlbnwwfHx8fDE3MTExMTI3MDd8MA&ixlib=rb-4.0.3&q=80&w=600" alt="IoT Tool Sensor">
+                        <div class="product-info">
+                            <h3>IoT Smart Tool Sensor</h3>
+                            <p>Monitor tool wear and performance in real-time with integrated IoT capabilities.</p>
+                            <a href="#" class="btn view-product-detail">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="about">
+        <h2 class="section-title">About ENGINECH</h2>
+        <p class="section-subtitle">
+            We are a leading innovator in industrial cutting solutions, committed to delivering excellence and driving progress in manufacturing worldwide.
+        </p>
+
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Our Company Vision</h3>
+                <p>
+                    ENGINECH was founded on the principle of pushing the boundaries of industrial precision and efficiency. With decades of expertise, we have grown into a global leader, recognized for our innovative tooling solutions and unwavering commitment to customer success. We invest heavily in R&D to bring you the next generation of cutting technology.
+                </p>
+                <p>
+                    Our state-of-the-art manufacturing facilities, coupled with a team of dedicated engineers and material scientists, ensure that every product bearing the ENGINECH name meets the highest standards of quality, performance, and durability. We believe in building lasting partnerships, providing not just tools, but comprehensive solutions and support.
+                </p>
+                <a href="#contact-footer" class="btn">Get in Touch</a>
+            </div>
+
+            <div class="about-ceo-card">
+                <div class="ceo-photo">
+                    <img src="https://via.placeholder.com/130x130/002856/FFFFFF?text=CEO+Photo" alt="CEO Name">
+                </div>
+                <div class="ceo-info">
+                    <h4>Jonathan Sterling</h4>
+                    <span>Founder & CEO</span>
+                    <p>
+                        "At ENGINECH, our mission is to empower industries with cutting-edge tools that transform challenges into opportunities. We are dedicated to innovation, quality, and sustainable manufacturing practices that build a better future."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="metrics-section">
+        <h2 class="section-title">ENGINECH by the Numbers</h2>
+        <div class="metrics-grid">
+            <div class="metric-item" data-value="28">
+                <div class="metric-value" id="metric1">0</div>
+                <div class="metric-label">Years of Innovation</div>
+            </div>
+            <div class="metric-item" data-value="7500">
+                <div class="metric-value" id="metric2">0</div>
+                <div class="metric-label">Solutions Delivered</div>
+            </div>
+            <div class="metric-item" data-value="98">
+                <div class="metric-value" id="metric3">0</div>
+                <div class="metric-label">Client Satisfaction %</div>
+            </div>
+            <div class="metric-item" data-value="160">
+                <div class="metric-value" id="metric4">0</div>
+                <div class="metric-label">Global Partners</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding partners-section" id="partners">
+        <h2 class="section-title">Our Authorized Distributor Partners</h2>
+        <p class="section-subtitle">
+            Find an ENGINECH authorized distributor near you to get local support, rapid delivery, and expert advice for your cutting needs. Our global network ensures seamless access to our advanced solutions.
+        </p>
+
+        <div class="partners-grid">
+            <div class="partner-card">
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/100x100?text=GLOBAL+TOOLS" alt="Global Tools Inc. Logo">
+                </div>
+                <div class="partner-info">
+                    <h3>Global Tools Inc.</h3>
+                    <p>Leading industrial supplier with nationwide distribution and profound technical expertise.</p>
+                    <a href="#" target="_blank" class="partner-link">Visit Website <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/100x100?text=PRECISION+SYS" alt="Precision Systems Co. Logo">
+                </div>
+                <div class="partner-info">
+                    <h3>Precision Systems Co.</h3>
+                    <p>Specializing in high-precision tooling and custom manufacturing solutions across key industries.</p>
+                    <a href="#" target="_blank" class="partner-link">Visit Website <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/100x100?text=INNOVATE+IND" alt="Innovate Industrial Solutions Logo">
+                </div>
+                <div class="partner-info">
+                    <h3>Innovate Industrial Solutions</h3>
+                    <p>Your regional partner for innovative industrial equipment and consumables, focusing on efficiency.</p>
+                    <a href="#" target="_blank" class="partner-link">Visit Website <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/100x100?text=APEX+SUPPLY" alt="Apex Supply Chain Solutions Logo">
+                </div>
+                <div class="partner-info">
+                    <h3>Apex Supply Chain Solutions</h3>
+                    <p>Providing fast and reliable delivery of industrial tools and integrated supply chain management.</p>
+                    <a href="#" target="_blank" class="partner-link">Visit Website <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding clients-section" id="clients">
+        <h2 class="section-title">Trusted by Industry Leaders</h2>
+        <div class="clients-slider" id="clientsSlider">
+            <div class="client-logo"><img src="https://via.placeholder.com/150x80?text=MANUFACTURING_GIANT" alt="Manufacturing Giant Logo"></div>
+            <div class="client-logo"><img src="https://via.placeholder.com/150x80?text=AUTO_CORP" alt="Automotive Corporation Logo"></div>
+            <div class="client-logo"><img src="https://via.placeholder.com/150x80?text=AERO_SYSTEMS" alt="Aerospace Systems Logo"></div>
+            <div class="client-logo"><img src="https://via.placeholder.com/150x80?text=TECH_INNOVATORS" alt="Tech Innovators Logo"></div>
+            <div class="client-logo"><img src="https://via.placeholder.com/150x80?text=ENERGY_SOLUTIONS" alt="Energy Solutions Logo"></div>
+            <div class="client-logo"><img src="https://via.placeholder.com/150x80?text=MEDICAL_DEVICES" alt="Medical Devices Co. Logo"></div>
+            <div class="client-logo"><img src="https://via.placeholder.com/150x80?text=MANUFACTURING_GIANT" alt="Manufacturing Giant Logo"></div>
+            <div class="client-logo"><img src="https://via.placeholder.com/150x80?text=AUTO_CORP" alt="Automotive Corporation Logo"></div>
+            <div class="client-logo"><img src="https://via.placeholder.com/150x80?text=AERO_SYSTEMS" alt="Aerospace Systems Logo"></div>
+            <div class="client-logo"><img src="https://via.placeholder.com/150x80?text=TECH_INNOVATORS" alt="Tech Innovators Logo"></div>
+            <div class="client-logo"><img src="https://via.placeholder.com/150x80?text=ENERGY_SOLUTIONS" alt="Energy Solutions Logo"></div>
+            <div class="client-logo"><img src="https://via.placeholder.com/150x80?text=MEDICAL_DEVICES" alt="Medical Devices Co. Logo"></div>
+        </div>
+    </section>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-product">
+                <div class="modal-image">
+                    <img src="" alt="Product Image" id="modalProductImage">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalProductTitle">Product Name</h2>
+                    <p id="modalProductDescription">
+                        Detailed description of the product goes here. This section can include more in-depth information about its features, benefits, and applications. It is crucial to replace this placeholder text with accurate and compelling details about your specific product. Highlight unique selling points and technical advantages.
+                    </p>
+                    <ul class="specs" id="modalProductSpecs">
+                        <li><span>Material:</span> <span>High-Grade Carbide</span></li>
+                        <li><span>Coating:</span> <span>Diamond-Like Carbon (DLC)</span></li>
+                        <li><span>Application:</span> <span>Precision Machining of Aluminum</span></li>
+                        <li><span>Diameter Range:</span> <span>0.5 - 20 mm</span></li>
+                        <li><span>Tolerance:</span> <span>H7</span></li>
+                        <li><span>Features:</span> <span>Internal Coolant Channels</span></li>
+                    </ul>
+                    <a href="#contact-footer" class="btn">Inquire Now</a>
+                    <a href="#services" class="btn btn-outline">More Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>ENGINECH</h3>
+                <p class="contact-info">
+                    <i class="fas fa-map-marker-alt"></i> 123 Precision Parkway, Industrial Zone, Innovate City, 12345
+                </p>
+                <p class="contact-info">
+                    <i class="fas fa-phone-alt"></i> +1 (555) 987-6543
+                </p>
+                <p class="contact-info">
+                    <i class="fas fa-envelope"></i> contact@enginech.com
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#partners">Distributors</a></li>
+                    <li><a href="#clients">Clients</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="#services">Milling Tools</a></li>
+                    <li><a href="#services">Drilling Solutions</a></li>
+                    <li><a href="#services">Turning Inserts</a></li>
+                    <li><a href="#services">Threading Tools</a></li>
+                    <li><a href="#services">Tool Holders</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Technical Support</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Downloads</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; <span id="currentYear"></span> ENGINECH. All rights reserved.
+        </div>
     </footer>
 
     <script>
-        // Function to update Lucide icons
-        function renderLucideIcons() {
-            lucide.createIcons();
-        }
-
-        // Utility function to generate a random placeholder image URL
-        function getRandomPlaceholderImage(width, height, text = 'Image', bgColor = 'A78BFA', textColor = 'FFFFFF') {
-            return `https://placehold.co/${width}x${height}/${bgColor}/${textColor}?text=${encodeURIComponent(text)}`;
-        }
-
-        // Function to create a static banner HTML string (for internal pages)
-        function createStaticBannerHtml(title, description, buttonText = "Learn More") {
-            return `
-                <section class="relative bg-gradient-to-br from-indigo-700 to-purple-900 text-white py-24 px-4 rounded-xl shadow-2xl overflow-hidden transform hover:scale-[1.01] transition-transform duration-500 ease-in-out">
-                    <div class="absolute inset-0 opacity-10 bg-pattern"></div>
-                    <div class="container mx-auto text-center relative z-10">
-                        <h1 class="text-6xl md:text-7xl font-extrabold mb-6 leading-tight drop-shadow-lg animate-fade-in-down">${title}</h1>
-                        <p class="text-2xl md:text-3xl font-light max-w-4xl mx-auto mb-10 opacity-90 animate-fade-in-up">${description}</p>
-                        <button class="bg-white text-indigo-700 hover:bg-gray-100 font-bold py-4 px-10 rounded-full shadow-xl transform hover:scale-110 hover:rotate-1 transition-all duration-500 ease-in-out ring-4 ring-white ring-opacity-30">
-                            ${buttonText}
-                        </button>
-                    </div>
-                </section>
-            `;
-        }
-
-        // Rive Animation Banner HTML for the Home Page
-        const riveBannerHtml = `
-            <section class="relative w-full h-[60vh] md:h-[80vh] overflow-hidden rounded-xl shadow-2xl flex items-center justify-center bg-gray-800">
-                <canvas id="rive-canvas" class="absolute inset-0 w-full h-full object-cover"></canvas>
-                <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-white text-center p-4">
-                    <h1 class="text-6xl md:text-7xl font-extrabold mb-6 leading-tight drop-shadow-lg animate-fade-in-down">Precision. Performance. Productivity.</h1>
-                    <p class="text-2xl md:text-3xl font-light max-w-4xl mx-auto mb-10 opacity-90 animate-fade-in-up">
-                        Your global partner in advanced turning solutions for unparalleled machining efficiency.
-                    </p>
-                    <button class="bg-white text-indigo-700 hover:bg-gray-100 font-bold py-4 px-10 rounded-full shadow-xl transform hover:scale-110 hover:rotate-1 transition-all duration-500 ease-in-out ring-4 ring-white ring-opacity-30">
-                        Explore Our Tools
-                    </button>
-                </div>
-            </section>
-        `;
-
-        // Function to initialize Rive animation
-        let riveInstance = null; // Store the Rive instance globally to manage it
-        function initRiveAnimation() {
-            const canvas = document.getElementById('rive-canvas');
-            if (canvas && typeof rive !== 'undefined') {
-                // Ensure no previous Rive instance is running on this canvas
-                if (riveInstance) {
-                    riveInstance.stop();
-                    riveInstance.cleanup();
-                    riveInstance = null;
-                }
-
-                riveInstance = new rive.Rive({
-                    canvas: canvas,
-                    src: 'https://cdn.rive.app/animations/vehicles.riv', // Example Rive animation
-                    autoplay: true,
-                    loop: true,
-                    stateMachines: 'bumpy', // If your Rive file has a state machine named 'bumpy'
-                    onLoad: () => {
-                        console.log('Rive animation loaded successfully.');
-                    },
-                    onError: (error) => {
-                        console.error('Error loading Rive animation:', error);
-                        // Fallback message if Rive fails to load
-                        if (canvas.parentNode) {
-                            const fallbackDiv = document.createElement('div');
-                            fallbackDiv.className = 'absolute inset-0 flex items-center justify-center bg-gray-900 text-white text-xl p-4 text-center';
-                            fallbackDiv.textContent = 'Animation could not be loaded. Please check your internet connection or try again later.';
-                            if (canvas.parentNode.contains(canvas)) {
-                                canvas.parentNode.replaceChild(fallbackDiv, canvas);
-                            }
-                        }
-                    }
-                });
-            } else if (canvas && canvas.parentNode) {
-                // Fallback if Rive library is not loaded or canvas not found
-                const fallbackDiv = document.createElement('div');
-                fallbackDiv.className = 'absolute inset-0 flex items-center justify-center bg-gray-900 text-white text-xl p-4 text-center';
-                fallbackDiv.textContent = 'Animation library not loaded. Please check your internet connection.';
-                if (canvas.parentNode.contains(canvas)) {
-                    canvas.parentNode.replaceChild(fallbackDiv, canvas);
-                }
-            }
-        }
-
-        // Data for dynamic content generation (example)
-        const testimonialsData = [
-            {
-                quote: "SRC's turning inserts transformed our production line. We saw a 30% increase in tool life and significantly improved surface finishes. Truly a game-changer for our aerospace components.",
-                author: "Sarah Chen",
-                title: "Production Manager, AeroTech Inc."
-            },
-            {
-                quote: "The modular tooling system from SRC dramatically reduced our setup times. Their engineering support was exceptional, helping us integrate seamlessly.",
-                author: "David Lee",
-                title: "Operations Director, Precision CNC Solutions"
-            },
-            {
-                quote: "For complex internal machining, SRC's anti-vibration boring bars are unmatched. The stability and precision allowed us to take on jobs we previously couldn't.",
-                author: "Maria Garcia",
-                title: "Lead Machinist, Global Manufacturing Co."
-            },
-            {
-                quote: "Their custom tooling department developed a unique solution for a challenging application. SRC is our go-to partner for innovation and reliable performance.",
-                author: "Ahmed Khan",
-                title: "R&D Head, Industrial Machining Group"
-            }
-        ];
-
-        const featuredNewsData = [
-            {
-                title: "SRC Unveils Next-Gen Ceramic Inserts for High-Speed Machining",
-                date: "July 15, 2025",
-                summary: "Our latest ceramic inserts are designed to excel in demanding high-speed applications, offering unparalleled wear resistance and thermal stability...",
-                image: getRandomPlaceholderImage(400, 250, 'Ceramic Inserts', '8B5CF6', 'FFFFFF')
-            },
-            {
-                title: "Sustainable Machining: SRC's Eco-Friendly Tooling Initiative",
-                date: "June 28, 2025",
-                summary: "Learn about SRC's commitment to sustainability, from eco-conscious manufacturing processes to tools designed for reduced waste and energy consumption...",
-                image: getRandomPlaceholderImage(400, 250, 'Eco Tools', '10B981', 'FFFFFF')
-            },
-            {
-                title: "Webinar: Optimizing Chip Control in Tough Materials",
-                date: "June 10, 2025",
-                summary: "Join our experts for an in-depth webinar on mastering chip control challenges when machining difficult-to-cut materials like Inconel and Titanium...",
-                image: getRandomPlaceholderImage(400, 250, 'Webinar', '3B82F6', 'FFFFFF')
-            }
-        ];
-
-        // Home Page Content HTML
-        const homePageHtml = `
-            <main class="container mx-auto my-12 p-4">
-                ${riveBannerHtml}
-
-                <section class="mt-16 bg-white p-10 rounded-xl shadow-2xl border border-gray-200 animate-slide-in-left">
-                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Our Turning Tool Solutions</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                        <div class="bg-gradient-to-br from-indigo-50 to-blue-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center border border-indigo-100">
-                            <i data-lucide="circle-dot" size="60" class="text-indigo-600 mb-6 animate-bounce-slow"></i>
-                            <h3 class="text-3xl font-semibold text-gray-900 mb-4">Turning Inserts</h3>
-                            <p class="text-gray-700 text-lg">Discover our extensive range of turning inserts, engineered for superior chip control, wear resistance, and surface finish across diverse materials and applications.</p>
-                            <img src="${getRandomPlaceholderImage(300, 200, 'Turning Inserts', 'A78BFA', 'FFFFFF')}" alt="Turning Insert Type A" class="mt-6 rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(300, 200, 'Image Not Found', 'A78BFA', 'FFFFFF')}';">
-                            <a href="#" class="mt-6 bg-indigo-500 text-white py-2 px-6 rounded-full hover:bg-indigo-600 transition-colors duration-200">View Products</a>
-                        </div>
-                        <div class="bg-gradient-to-br from-green-50 to-teal-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center border border-green-100">
-                            <i data-lucide="tool" size="60" class="text-green-600 mb-6 animate-bounce-slow"></i>
-                            <h3 class="text-3xl font-semibold text-gray-900 mb-4">Tool Holders</h3>
-                            <p class="text-gray-700 text-lg">Explore our robust and precise tool holders, designed for maximum stability, vibration dampening, and efficient coolant delivery for optimal turning operations.</p>
-                            <img src="${getRandomPlaceholderImage(300, 200, 'Tool Holders', '34D399', 'FFFFFF')}" alt="Tool Holder Type B" class="mt-6 rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(300, 200, 'Image Not Found', '34D399', 'FFFFFF')}';">
-                            <a href="#" class="mt-6 bg-green-500 text-white py-2 px-6 rounded-full hover:bg-green-600 transition-colors duration-200">View Products</a>
-                        </div>
-                        <div class="bg-gradient-to-br from-yellow-50 to-orange-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center border border-yellow-100">
-                            <i data-lucide="circle-dashed" size="60" class="text-yellow-600 mb-6 animate-bounce-slow"></i>
-                            <h3 class="text-3xl font-semibold text-gray-900 mb-4">Boring Bars</h3>
-                            <p class="text-gray-700 text-lg">Achieve exceptional internal machining with our high-precision boring bars, offering superior rigidity and versatility for various bore diameters and depths.</p>
-                            <img src="${getRandomPlaceholderImage(300, 200, 'Boring Bars', 'FACC15', 'FFFFFF')}" alt="Boring Bar Type C" class="mt-6 rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(300, 200, 'Image Not Found', 'FACC15', 'FFFFFF')}';">
-                            <a href="#" class="mt-6 bg-yellow-500 text-white py-2 px-6 rounded-full hover:bg-yellow-600 transition-colors duration-200">View Products</a>
-                        </div>
-                        <div class="bg-gradient-to-br from-red-50 to-pink-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center border border-red-100">
-                            <i data-lucide="scissors" size="60" class="text-red-600 mb-6 animate-bounce-slow"></i>
-                            <h3 class="text-3xl font-semibold text-gray-900 mb-4">Parting & Grooving</h3>
-                            <p class="text-gray-700 text-lg">Our parting and grooving tools deliver high accuracy and reliability, ensuring clean cuts and consistent groove forms for efficient component separation.</p>
-                            <img src="${getRandomPlaceholderImage(300, 200, 'Grooving Tools', 'EF4444', 'FFFFFF')}" alt="Grooving Tool Type D" class="mt-6 rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(300, 200, 'Image Not Found', 'EF4444', 'FFFFFF')}';">
-                            <a href="#" class="mt-6 bg-red-500 text-white py-2 px-6 rounded-full hover:bg-red-600 transition-colors duration-200">View Products</a>
-                        </div>
-                        <div class="bg-gradient-to-br from-purple-50 to-fuchsia-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center border border-purple-100">
-                            <i data-lucide="settings-2" size="60" class="text-purple-600 mb-6 animate-bounce-slow"></i>
-                            <h3 class="text-3xl font-semibold text-gray-900 mb-4">Thread Turning</h3>
-                            <p class="text-gray-700 text-lg">Produce high-quality threads with our specialized thread turning tools, designed for precision, long tool life, and excellent surface finish in various threading applications.</p>
-                            <img src="${getRandomPlaceholderImage(300, 200, 'Threading Tools', 'A855F7', 'FFFFFF')}" alt="Thread Turning Tool Type E" class="mt-6 rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(300, 200, 'Image Not Found', 'A855F7', 'FFFFFF')}';">
-                            <a href="#" class="mt-6 bg-purple-500 text-white py-2 px-6 rounded-full hover:bg-purple-600 transition-colors duration-200">View Products</a>
-                        </div>
-                        <div class="bg-gradient-to-br from-cyan-50 to-blue-100 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center border border-cyan-100">
-                            <i data-lucide="gauge" size="60" class="text-cyan-600 mb-6 animate-bounce-slow"></i>
-                            <h3 class="text-3xl font-semibold text-gray-900 mb-4">Tooling Systems</h3>
-                            <p class="text-gray-700 text-lg">Integrated tooling systems for optimized performance, quick changeovers, and enhanced process security, maximizing your machine utilization.</p>
-                            <img src="${getRandomPlaceholderImage(300, 200, 'Tooling Systems', '06B6D4', 'FFFFFF')}" alt="Tooling System Type F" class="mt-6 rounded-lg shadow-md w-full h-auto object-cover" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(300, 200, 'Image Not Found', '06B6D4', 'FFFFFF')}';">
-                            <a href="#" class="mt-6 bg-cyan-500 text-white py-2 px-6 rounded-full hover:bg-cyan-600 transition-colors duration-200">View Products</a>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="mt-16 bg-gradient-to-br from-gray-50 to-gray-100 p-10 rounded-xl shadow-2xl border border-gray-200 text-center animate-slide-in-right">
-                    <h2 class="text-5xl font-bold text-gray-800 mb-10 leading-tight">Turning Applications in Action</h2>
-                    <div class="relative w-full max-w-4xl mx-auto aspect-video rounded-xl shadow-xl overflow-hidden">
-                        <iframe
-                            class="absolute top-0 left-0 w-full h-full"
-                            src="https://www.youtube.com/embed/videoseries?list=PL_m82Q1nI8y09B7b2J_9uB5P_9h_0_9e&autoplay=1&mute=1&controls=0&modestbranding=1&rel=0"
-                            title="Turning Application Video Playlist"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-                    <p class="text-gray-700 text-lg mt-8 max-w-2xl mx-auto">
-                        See our precision turning tools in action, demonstrating superior performance and efficiency in various industrial applications. From general machining to highly specialized tasks, SRC tools deliver consistent, high-quality results.
-                    </p>
-                    <button class="mt-8 bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-200 transform hover:scale-105">
-                        Watch More Videos
-                    </button>
-                </section>
-
-                <section class="mt-16 bg-white p-10 rounded-xl shadow-2xl border border-gray-200 animate-slide-in-left">
-                    <h2 class="text-5xl font-bold text-gray-800 mb-10 text-center leading-tight">Featured Innovations</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                        <div class="bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden border border-gray-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'High Feed Insert', 'FFD1DC', 'FF007F')}" alt="High Feed Insert Innovation" class="w-full h-56 object-cover transform hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', 'FFD1DC', 'FF007F')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-3">Advanced High-Feed Turning Inserts</h3>
-                                <p class="text-gray-700 text-base leading-relaxed">Engineered for maximum material removal rates and extended tool life in demanding applications, our new high-feed inserts redefine productivity in heavy-duty turning, even for aerospace alloys and hardened steels.</p>
-                                <a href="#" class="inline-block mt-4 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-200">View Details →</a>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden border border-gray-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'Modular Tooling', 'D1FADF', '008000')}" alt="Modular Tooling System Innovation" class="w-full h-56 object-cover transform hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', 'D1FADF', '008000')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-3">Modular Quick-Change Tooling System</h3>
-                                <p class="text-gray-700 text-base leading-relaxed">Revolutionize your setup times with our innovative modular tooling system, designed for rapid and precise tool changes, minimizing downtime and maximizing throughput on your CNC machines.</p>
-                                <a href="#" class="inline-block mt-4 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-200">View Details →</a>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 overflow-hidden border border-gray-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'Smart Tooling', 'ADD8E6', '000080')}" alt="Smart Tooling Solutions Innovation" class="w-full h-56 object-cover transform hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', 'ADD8E6', '000080')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-3">Smart Tooling with Integrated Sensors</h3>
-                                <p class="text-gray-700 text-base leading-relaxed">Step into the future of manufacturing with our smart tooling solutions featuring integrated sensors for real-time monitoring of tool wear, temperature, and vibration, enabling predictive maintenance and enhanced process control.</p>
-                                <a href="#" class="inline-block mt-4 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors duration-200">View Details →</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="mt-16 bg-gradient-to-br from-indigo-500 to-purple-700 text-white py-16 px-4 rounded-xl shadow-2xl flex flex-col md:flex-row items-center justify-between animate-fade-in-up">
-                    <div class="md:w-2/3 text-center md:text-left mb-8 md:mb-0">
-                        <h2 class="text-5xl font-extrabold mb-4 leading-tight">Ready to Optimize Your Machining?</h2>
-                        <p class="text-xl opacity-90">Contact our experts today for a personalized consultation and discover how SRC tools can enhance your productivity and precision.</p>
-                    </div>
-                    <div class="md:w-1/3 text-center md:text-right">
-                        <button data-section="contact" class="bg-white text-indigo-700 hover:bg-gray-100 font-bold py-4 px-10 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300 ease-in-out">
-                            Get in Touch
-                        </button>
-                    </div>
-                </section>
-            </main>
-        `;
-
-        // Turning Tools Page Content HTML
-        const toolsPageHtml = `
-            <main class="container mx-auto my-12 p-4">
-                ${createStaticBannerHtml("Precision Turning Tools", "Explore our extensive range of high-performance turning tools, designed for optimal precision and productivity in every application.", "Browse Categories")}
-
-                <section class="mt-16 bg-white p-10 rounded-xl shadow-2xl border border-gray-200 animate-slide-in-left">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">Our Product Categories</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Category 1: Turning Inserts -->
-                        <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-blue-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'Turning Inserts', '6366F1', 'FFFFFF')}" alt="Turning Inserts" class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', '6366F1', 'FFFFFF')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Turning Inserts</h3>
-                                <p class="text-gray-700">A wide selection of inserts for various materials and machining operations, ensuring superior chip control and tool life.</p>
-                                <ul class="list-disc list-inside text-gray-600 mt-4 space-y-1 text-sm">
-                                    <li>PVD & CVD Coated Grades</li>
-                                    <li>Ceramic & CBN Inserts</li>
-                                    <li>Chipbreaker Geometries</li>
-                                </ul>
-                                <a href="#" class="inline-block mt-4 bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition-colors duration-200">View Inserts</a>
-                            </div>
-                        </div>
-
-                        <!-- Category 2: Tool Holders -->
-                        <div class="bg-gradient-to-br from-green-50 to-teal-100 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-green-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'Tool Holders', '10B981', 'FFFFFF')}" alt="Tool Holders" class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', '10B981', 'FFFFFF')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Tool Holders</h3>
-                                <p class="text-gray-700">Rigid and precise tool holders designed for stability, optimal performance, and quick setup in various turning machines.</p>
-                                <ul class="list-disc list-inside text-gray-600 mt-4 space-y-1 text-sm">
-                                    <li>External & Internal Turning</li>
-                                    <li>Modular Tooling Systems</li>
-                                    <li>Vibration-Damping Holders</li>
-                                </ul>
-                                <a href="#" class="inline-block mt-4 bg-green-500 text-white py-2 px-4 rounded-full hover:bg-green-600 transition-colors duration-200">View Holders</a>
-                            </div>
-                        </div>
-
-                        <!-- Category 3: Boring Bars -->
-                        <div class="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-yellow-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'Boring Bars', 'FACC15', 'FFFFFF')}" alt="Boring Bars" class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', 'FACC15', 'FFFFFF')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Boring Bars</h3>
-                                <p class="text-gray-700">High-precision boring bars for internal machining, offering exceptional rigidity and surface finish for critical bore tolerances.</p>
-                                <ul class="list-disc list-inside text-gray-600 mt-4 space-y-1 text-sm">
-                                    <li>Solid Carbide & Steel Shanks</li>
-                                    <li>Anti-Vibration Solutions</li>
-                                    <li>Micro-Boring Capabilities</li>
-                                </ul>
-                                <a href="#" class="inline-block mt-4 bg-yellow-500 text-white py-2 px-4 rounded-full hover:bg-yellow-600 transition-colors duration-200">View Boring Bars</a>
-                            </div>
-                        </div>
-
-                        <!-- Category 4: Parting & Grooving -->
-                        <div class="bg-gradient-to-br from-red-50 to-pink-100 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-red-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'Parting & Grooving', 'EF4444', 'FFFFFF')}" alt="Parting & Grooving Tools" class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', 'EF4444', 'FFFFFF')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Parting & Grooving</h3>
-                                <p class="text-gray-700">Tools for efficient and precise parting-off and grooving operations, ensuring consistent quality and extended tool life.</p>
-                                <ul class="list-disc list-inside text-gray-600 mt-4 space-y-1 text-sm">
-                                    <li>Internal & External Grooving</li>
-                                    <li>Deep Parting Solutions</li>
-                                    <li>Multi-functional Tools</li>
-                                </ul>
-                                <a href="#" class="inline-block mt-4 bg-red-500 text-white py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-200">View Tools</a>
-                            </div>
-                        </div>
-
-                        <!-- Category 5: Thread Turning -->
-                        <div class="bg-gradient-to-br from-purple-50 to-fuchsia-100 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-purple-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'Thread Turning', 'A855F7', 'FFFFFF')}" alt="Thread Turning Tools" class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', 'A855F7', 'FFFFFF')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Thread Turning</h3>
-                                <p class="text-gray-700">Specialized tools for producing high-quality internal and external threads with superior accuracy and surface integrity.</p>
-                                <ul class="list-disc list-inside text-gray-600 mt-4 space-y-1 text-sm">
-                                    <li>Full Profile & V-Profile Inserts</li>
-                                    <li>Internal & External Threading</li>
-                                    <li>Metric, Inch & Special Pitches</li>
-                                </ul>
-                                <a href="#" class="inline-block mt-4 bg-purple-500 text-white py-2 px-4 rounded-full hover:bg-purple-600 transition-colors duration-200">View Tools</a>
-                            </div>
-                        </div>
-
-                        <!-- Category 6: Custom Tooling -->
-                        <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'Custom Tooling', '4B5563', 'FFFFFF')}" alt="Custom Tooling" class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', '4B5563', 'FFFFFF')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Custom Tooling</h3>
-                                <p class="text-gray-700">Tailored solutions for unique and challenging machining applications, designed by our expert engineering team.</p>
-                                <ul class="list-disc list-inside text-gray-600 mt-4 space-y-1 text-sm">
-                                    <li>Application-Specific Designs</li>
-                                    <li>Prototyping & Development</li>
-                                    <li>Optimized Performance</li>
-                                </ul>
-                                <a href="#" class="inline-block mt-4 bg-gray-700 text-white py-2 px-4 rounded-full hover:bg-gray-800 transition-colors duration-200">Request Custom Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="mt-16 bg-gradient-to-br from-indigo-100 to-purple-100 p-10 rounded-xl shadow-2xl border border-indigo-200 animate-slide-in-right">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">Featured Turning Tools</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                            <img src="${getRandomPlaceholderImage(400, 250, 'CBN Insert', '3B82F6', 'FFFFFF')}" alt="CBN Insert" class="w-full h-48 object-cover">
-                            <div class="p-5">
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">High-Performance CBN Insert for Hard Turning</h3>
-                                <p class="text-gray-700 text-sm">Designed for machining hardened steels and superalloys, offering exceptional wear resistance and surface finish.</p>
-                                <div class="mt-3 flex items-center justify-between">
-                                    <span class="text-lg font-bold text-indigo-600">Starting from $XX.XX</span>
-                                    <button class="bg-indigo-500 text-white py-1.5 px-4 rounded-full text-sm hover:bg-indigo-600 transition-colors duration-200">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                            <img src="${getRandomPlaceholderImage(400, 250, 'Quick Change Holder', '10B981', 'FFFFFF')}" alt="Quick Change Holder" class="w-full h-48 object-cover">
-                            <div class="p-5">
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Modular Quick-Change Tool Holder System</h3>
-                                <p class="text-gray-700 text-sm">Reduce setup times and increase machine uptime with our precise and rigid quick-change holders.</p>
-                                <div class="mt-3 flex items-center justify-between">
-                                    <span class="text-lg font-bold text-indigo-600">Starting from $XX.XX</span>
-                                    <button class="bg-indigo-500 text-white py-1.5 px-4 rounded-full text-sm hover:bg-indigo-600 transition-colors duration-200">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                            <img src="${getRandomPlaceholderImage(400, 250, 'Vibration Damping BB', 'FACC15', 'FFFFFF')}" alt="Vibration Damping Boring Bar" class="w-full h-48 object-cover">
-                            <div class="p-5">
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Anti-Vibration Carbide Boring Bar</h3>
-                                <p class="text-gray-700 text-sm">Achieve chatter-free machining and superior surface finish even in deep and unstable bores.</p>
-                                <div class="mt-3 flex items-center justify-between">
-                                    <span class="text-lg font-bold text-indigo-600">Starting from $XX.XX</span>
-                                    <button class="bg-indigo-500 text-white py-1.5 px-4 rounded-full text-sm hover:bg-indigo-600 transition-colors duration-200">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-        `;
-
-        // Applications Page Content HTML
-        const applicationsPageHtml = `
-            <main class="container mx-auto my-12 p-4">
-                ${createStaticBannerHtml("Versatile Turning Applications", "SRC tools are engineered for peak performance across a multitude of industries and machining scenarios.", "View Case Studies")}
-
-                <section class="mt-16 bg-white p-10 rounded-xl shadow-2xl border border-gray-200 animate-slide-in-left">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">Industries We Serve</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-blue-50 p-8 rounded-xl shadow-lg flex items-center space-x-4 hover:shadow-xl transition-shadow duration-200 border border-blue-100">
-                            <i data-lucide="plane" size="48" class="text-blue-600"></i>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-900">Aerospace</h3>
-                                <p class="text-gray-700 text-sm">High-precision tools for critical aerospace components from exotic alloys.</p>
-                            </div>
-                        </div>
-                        <div class="bg-green-50 p-8 rounded-xl shadow-lg flex items-center space-x-4 hover:shadow-xl transition-shadow duration-200 border border-green-100">
-                            <i data-lucide="car" size="48" class="text-green-600"></i>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-900">Automotive</h3>
-                                <p class="text-gray-700 text-sm">Solutions for engine parts, transmission components, and braking systems.</p>
-                            </div>
-                        </div>
-                        <div class="bg-yellow-50 p-8 rounded-xl shadow-lg flex items-center space-x-4 hover:shadow-xl transition-shadow duration-200 border border-yellow-100">
-                            <i data-lucide="gear" size="48" class="text-yellow-600"></i>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-900">General Machining</h3>
-                                <p class="text-gray-700 text-sm">Versatile tools for a wide array of everyday turning tasks and materials.</p>
-                            </div>
-                        </div>
-                        <div class="bg-red-50 p-8 rounded-xl shadow-lg flex items-center space-x-4 hover:shadow-xl transition-shadow duration-200 border border-red-100">
-                            <i data-lucide="syringe" size="48" class="text-red-600"></i>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-900">Medical</h3>
-                                <p class="text-gray-700 text-sm">Ultra-precise tools for producing intricate medical devices and implants.</p>
-                            </div>
-                        </div>
-                        <div class="bg-purple-50 p-8 rounded-xl shadow-lg flex items-center space-x-4 hover:shadow-xl transition-shadow duration-200 border border-purple-100">
-                            <i data-lucide="drill" size="48" class="text-purple-600"></i>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-900">Oil & Gas</h3>
-                                <p class="text-gray-700 text-sm">Robust tooling for demanding applications in drilling and extraction equipment.</p>
-                            </div>
-                        </div>
-                        <div class="bg-cyan-50 p-8 rounded-xl shadow-lg flex items-center space-x-4 hover:shadow-xl transition-shadow duration-200 border border-cyan-100">
-                            <i data-lucide="factory" size="48" class="text-cyan-600"></i>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-900">Heavy Industry</h3>
-                                <p class="text-gray-700 text-sm">Durable tools for large-scale components and heavy-duty machining.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="mt-16 bg-gradient-to-br from-gray-50 to-gray-100 p-10 rounded-xl shadow-2xl border border-gray-200 animate-slide-in-right">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">Key Application Areas</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex items-start space-x-4">
-                            <i data-lucide="circle-dot-dashed" size="32" class="text-indigo-500 mt-1"></i>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">External Turning</h3>
-                                <p class="text-gray-700 text-base">Achieve precise outer diameters and contours with our optimized external turning tools. Solutions for roughing, finishing, and profiling.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex items-start space-x-4">
-                            <i data-lucide="circle-off" size="32" class="text-green-500 mt-1"></i>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Internal Turning (Boring)</h3>
-                                <p class="text-gray-700 text-base">Master internal machining with our high-stability boring bars, ensuring accuracy and surface quality for various bore sizes and depths.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex items-start space-x-4">
-                            <i data-lucide="split" size="32" class="text-yellow-500 mt-1"></i>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Parting & Grooving</h3>
-                                <p class="text-gray-700 text-base">Execute efficient and clean parting-off and grooving operations, critical for component separation and feature creation.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex items-start space-x-4">
-                            <i data-lucide="cog" size="32" class="text-red-500 mt-1"></i>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Thread Turning</h3>
-                                <p class="text-gray-700 text-base">Produce accurate and high-quality threads with our dedicated threading tools, covering a wide range of pitches and profiles.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex items-start space-x-4">
-                            <i data-lucide="diamond" size="32" class="text-purple-500 mt-1"></i>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Hard Part Turning</h3>
-                                <p class="text-gray-700 text-base">Specialized solutions for efficiently turning hardened materials, reducing the need for grinding and improving process efficiency.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex items-start space-x-4">
-                            <i data-lucide="cylinder" size="32" class="text-cyan-500 mt-1"></i>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Bar Peeling & Skiving</h3>
-                                <p class="text-gray-700 text-base">High-performance tools for rapid material removal in bar peeling and precise surface finishing in skiving operations.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-        `;
-
-        // Resources Page Content HTML
-        const resourcesPageHtml = `
-            <main class="container mx-auto my-12 p-4">
-                ${createStaticBannerHtml("Knowledge Hub & Resources", "Access a wealth of information to optimize your turning processes and stay ahead in machining technology.", "Explore Resources")}
-
-                <section class="mt-16 bg-white p-10 rounded-xl shadow-2xl border border-gray-200 animate-slide-in-left">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">Our Resource Library</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Resource Card 1: Technical Guides -->
-                        <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-blue-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'Technical Guides', '6366F1', 'FFFFFF')}" alt="Technical Guides" class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', '6366F1', 'FFFFFF')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Technical Guides & Manuals</h3>
-                                <p class="text-gray-700">Detailed guides on tool selection, cutting data, troubleshooting, and best practices for various turning operations.</p>
-                                <a href="#" class="inline-block mt-4 bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition-colors duration-200">Download Guides</a>
-                            </div>
-                        </div>
-
-                        <!-- Resource Card 2: Webinars & Videos -->
-                        <div class="bg-gradient-to-br from-green-50 to-teal-100 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-green-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'Webinars', '10B981', 'FFFFFF')}" alt="Webinars & Videos" class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', '10B981', 'FFFFFF')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Webinars & Video Tutorials</h3>
-                                <p class="text-gray-700">Learn from our experts through recorded webinars and practical video tutorials on advanced machining techniques.</p>
-                                <a href="#" class="inline-block mt-4 bg-green-500 text-white py-2 px-4 rounded-full hover:bg-green-600 transition-colors duration-200">Watch Now</a>
-                            </div>
-                        </div>
-
-                        <!-- Resource Card 3: Case Studies -->
-                        <div class="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-yellow-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'Case Studies', 'FACC15', 'FFFFFF')}" alt="Case Studies" class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', 'FACC15', 'FFFFFF')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Success Stories & Case Studies</h3>
-                                <p class="text-gray-700">Explore real-world examples of how SRC tools have solved complex machining challenges for our customers.</p>
-                                <a href="#" class="inline-block mt-4 bg-yellow-500 text-white py-2 px-4 rounded-full hover:bg-yellow-600 transition-colors duration-200">Read Case Studies</a>
-                            </div>
-                        </div>
-
-                        <!-- Resource Card 4: FAQs & Troubleshooting -->
-                        <div class="bg-gradient-to-br from-red-50 to-pink-100 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-red-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'FAQ', 'EF4444', 'FFFFFF')}" alt="FAQ & Troubleshooting" class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', 'EF4444', 'FFFFFF')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-2">FAQs & Troubleshooting</h3>
-                                <p class="text-gray-700">Find quick answers to common questions and solutions to typical machining problems.</p>
-                                <a href="#" class="inline-block mt-4 bg-red-500 text-white py-2 px-4 rounded-full hover:bg-red-600 transition-colors duration-200">View FAQs</a>
-                            </div>
-                        </div>
-
-                        <!-- Resource Card 5: Blog & Articles -->
-                        <div class="bg-gradient-to-br from-purple-50 to-fuchsia-100 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-purple-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'Blog', 'A855F7', 'FFFFFF')}" alt="Blog & Articles" class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', 'A855F7', 'FFFFFF')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Blog & Expert Articles</h3>
-                                <p class="text-gray-700">Stay updated with the latest trends, tips, and insights from our machining experts.</p>
-                                <a href="#" class="inline-block mt-4 bg-purple-500 text-white py-2 px-4 rounded-full hover:bg-purple-600 transition-colors duration-200">Read Our Blog</a>
-                            </div>
-                        </div>
-
-                        <!-- Resource Card 6: Training Programs -->
-                        <div class="bg-gradient-to-br from-cyan-50 to-blue-100 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-cyan-100">
-                            <img src="${getRandomPlaceholderImage(600, 400, 'Training', '06B6D4', 'FFFFFF')}" alt="Training Programs" class="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null;this.src='${getRandomPlaceholderImage(600, 400, 'Image Not Found', '06B6D4', 'FFFFFF')}';">
-                            <div class="p-6">
-                                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Training Programs</h3>
-                                <p class="text-gray-700">Enhance your team's skills with our comprehensive turning tool training courses.</p>
-                                <a href="#" class="inline-block mt-4 bg-cyan-500 text-white py-2 px-4 rounded-full hover:bg-cyan-600 transition-colors duration-200">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-        `;
-
-        // About Us Page Content HTML
-        const aboutPageHtml = `
-            <main class="container mx-auto my-12 p-4">
-                ${createStaticBannerHtml("About SRC😎😎", "Pioneering precision machining solutions for over two decades. Discover our story, mission, and commitment to excellence.", "Our Story")}
-
-                <section class="mt-16 bg-white p-10 rounded-xl shadow-2xl border border-gray-200 animate-slide-in-left">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">Our Mission & Vision</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                        <div class="text-center md:text-left">
-                            <h3 class="text-3xl font-semibold text-indigo-700 mb-4">Mission</h3>
-                            <p class="text-gray-700 text-lg leading-relaxed">To empower industries worldwide with innovative, high-performance turning tools that drive unparalleled precision, productivity, and profitability. We are committed to continuous research and development, delivering solutions that meet the evolving demands of modern manufacturing.</p>
-                        </div>
-                        <div class="text-center md:text-left">
-                            <h3 class="text-3xl font-semibold text-purple-700 mb-4">Vision</h3>
-                            <p class="text-gray-700 text-lg leading-relaxed">To be the global leader in advanced machining solutions, recognized for our cutting-edge technology, exceptional product quality, and unwavering dedication to customer success. We envision a future where precision manufacturing is more efficient, sustainable, and accessible.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="mt-16 bg-gradient-to-br from-gray-50 to-gray-100 p-10 rounded-xl shadow-2xl border border-gray-200 animate-slide-in-right">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">Our Values</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 text-center transform hover:scale-105 transition-transform duration-300">
-                            <i data-lucide="sparkles" size="48" class="text-yellow-500 mb-4"></i>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Innovation</h3>
-                            <p class="text-gray-700 text-sm">Continuously pushing boundaries to develop groundbreaking tooling technologies.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 text-center transform hover:scale-105 transition-transform duration-300">
-                            <i data-lucide="check-circle" size="48" class="text-green-500 mb-4"></i>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Quality</h3>
-                            <p class="text-gray-700 text-sm">Uncompromising standards in design, materials, and manufacturing processes.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 text-center transform hover:scale-105 transition-transform duration-300">
-                            <i data-lucide="users" size="48" class="text-blue-500 mb-4"></i>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Customer Focus</h3>
-                            <p class="text-gray-700 text-sm">Dedicated to understanding and exceeding our customers' machining needs.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 text-center transform hover:scale-105 transition-transform duration-300">
-                            <i data-lucide="leaf" size="48" class="text-teal-500 mb-4"></i>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Sustainability</h3>
-                            <p class="text-gray-700 text-sm">Committed to environmentally responsible practices and product lifecycle.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 text-center transform hover:scale-105 transition-transform duration-300">
-                            <i data-lucide="award" size="48" class="text-orange-500 mb-4"></i>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Excellence</h3>
-                            <p class="text-gray-700 text-sm">Striving for the highest levels of performance in everything we do.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 text-center transform hover:scale-105 transition-transform duration-300">
-                            <i data-lucide="handshake" size="48" class="text-indigo-500 mb-4"></i>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Collaboration</h3>
-                            <p class="text-gray-700 text-sm">Fostering strong partnerships with our clients, suppliers, and team members.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="mt-16 bg-white p-10 rounded-xl shadow-2xl border border-gray-200 animate-slide-in-left">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">Our History</h2>
-                    <div class="max-w-3xl mx-auto text-gray-700 leading-relaxed text-lg">
-                        <p class="mb-6">Founded in 2005, SRC😎😎 began with a vision to revolutionize the machining industry by providing cutting-edge turning solutions. What started as a small team of passionate engineers and machinists has grown into a global leader, serving diverse sectors from aerospace to automotive.</p>
-                        <p class="mb-6">Over the years, we've continually invested in research and development, pioneering advancements in material science, coating technologies, and tool geometries. Our commitment to innovation has led to numerous patented designs and industry-first products that consistently set new benchmarks for performance and efficiency.</p>
-                        <p>Today, SRC😎😎 stands as a testament to precision, quality, and customer dedication. We are proud of our journey and remain committed to shaping the future of machining through continuous improvement and close collaboration with our clients worldwide.</p>
-                    </div>
-                </section>
-                <section class="mt-16 bg-gradient-to-br from-indigo-500 to-purple-700 text-white py-16 px-4 rounded-xl shadow-2xl flex flex-col md:flex-row items-center justify-between animate-fade-in-up">
-                    <div class="md:w-2/3 text-center md:text-left mb-8 md:mb-0">
-                        <h2 class="text-5xl font-extrabold mb-4 leading-tight">Join Our Growing Family!</h2>
-                        <p class="text-xl opacity-90">Explore career opportunities or partner with us to drive the future of precision manufacturing.</p>
-                    </div>
-                    <div class="md:w-1/3 text-center md:text-right">
-                        <button data-section="contact" class="bg-white text-indigo-700 hover:bg-gray-100 font-bold py-4 px-10 rounded-full shadow-xl transform hover:scale-105 transition-all duration-300 ease-in-out">
-                            Contact HR
-                        </button>
-                    </div>
-                </section>
-            </main>
-        `;
-
-        // Contact Page Content HTML
-        const contactPageHtml = `
-            <main class="container mx-auto my-12 p-4">
-                ${createStaticBannerHtml("Contact Us", "We're here to help! Reach out to our team for sales inquiries, technical support, or general questions.", "Send a Message")}
-
-                <section class="mt-16 bg-white p-10 rounded-xl shadow-2xl border border-gray-200 animate-slide-in-left">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center">Get in Touch</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <!-- Contact Form -->
-                        <div>
-                            <h3 class="text-3xl font-semibold text-gray-900 mb-6">Send Us a Message</h3>
-                            <form class="space-y-6">
-                                <div>
-                                    <label for="name" class="block text-lg font-medium text-gray-700 mb-2">Your Name</label>
-                                    <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200" placeholder="John Doe">
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Email Address</label>
-                                    <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200" placeholder="you@example.com">
-                                </div>
-                                <div>
-                                    <label for="subject" class="block text-lg font-medium text-gray-700 mb-2">Subject</label>
-                                    <input type="text" id="subject" name="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200" placeholder="Inquiry about Turning Tools">
-                                </div>
-                                <div>
-                                    <label for="message" class="block text-lg font-medium text-gray-700 mb-2">Your Message</label>
-                                    <textarea id="message" name="message" rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200" placeholder="Type your message here..."></textarea>
-                                </div>
-                                <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3 px-6 rounded-full hover:bg-indigo-700 transition-colors duration-300 shadow-lg transform hover:scale-105">
-                                    Send Message
-                                </button>
-                            </form>
-                        </div>
-
-                        <!-- Contact Information -->
-                        <div>
-                            <h3 class="text-3xl font-semibold text-gray-900 mb-6">Our Contact Details</h3>
-                            <div class="space-y-6 text-lg text-gray-700">
-                                <p class="flex items-center">
-                                    <i data-lucide="map-pin" class="mr-3 text-indigo-500" size="24"></i>
-                                    <strong>Address:</strong> 123 Precision Parkway, Machining City, Global - 54321, Earth
-                                </p>
-                                <p class="flex items-center">
-                                    <i data-lucide="phone" class="mr-3 text-indigo-500" size="24"></i>
-                                    <strong>Phone:</strong> +1 (555) 123-4567
-                                </p>
-                                <p class="flex items-center">
-                                    <i data-lucide="mail" class="mr-3 text-indigo-500" size="24"></i>
-                                    <strong>Email:</strong> <a href="mailto:info@srctools.com" class="text-indigo-600 hover:underline">info@srctools.com</a>
-                                </p>
-                                <p class="flex items-center">
-                                    <i data-lucide="globe" class="mr-3 text-indigo-500" size="24"></i>
-                                    <strong>Website:</strong> <a href="https://www.srctools.com" class="text-indigo-600 hover:underline" target="_blank">www.srctools.com</a>
-                                </p>
-                            </div>
-
-                            <h3 class="text-3xl font-semibold text-gray-900 mt-10 mb-6">Visit Our Location</h3>
-                            <div class="aspect-video w-full rounded-xl shadow-lg overflow-hidden border border-gray-200">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117500.52504260905!2d72.43399066938992!3d23.020281699042594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd6db%3A0x431785f19e787832!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1719946400000!5m2!1sen!2sin"
-                                    width="100%"
-                                    height="450"
-                                    style="border:0;"
-                                    allowfullscreen=""
-                                    loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade"
-                                    title="Google Maps Location of Ahmedabad"
-                                ></iframe>
-                            </div>
-                            <p class="text-gray-600 text-sm mt-4 text-center">Google Maps embed for our main office location.</p>
-                        </div>
-                    </div>
-                </section>
-            </main>
-        `;
-
-
-        // Main content loading function
-        const mainContentDiv = document.getElementById('main-content');
-
-        function loadContent(sectionId) {
-            mainContentDiv.innerHTML = ''; // Clear existing content
-            window.scrollTo(0, 0); // Scroll to top
-
-            let contentHtml = '';
-            let runRive = false;
-
-            // Remove active state from all nav buttons
-            document.querySelectorAll('.navbar-menu button').forEach(button => {
-                button.classList.remove('bg-indigo-600', 'text-white', 'hover:bg-gray-700');
-                button.classList.add('text-gray-300', 'hover:bg-gray-700', 'hover:text-white');
-            });
-
-            switch (sectionId) {
-                case 'home':
-                    contentHtml = homePageHtml;
-                    runRive = true;
-                    break;
-                case 'tools':
-                    contentHtml = toolsPageHtml;
-                    break;
-                case 'applications':
-                    contentHtml = applicationsPageHtml;
-                    break;
-                case 'resources':
-                    contentHtml = resourcesPageHtml;
-                    break;
-                case 'about':
-                    contentHtml = aboutPageHtml;
-                    break;
-                case 'contact':
-                    contentHtml = contactPageHtml;
-                    break;
-                default:
-                    // Fallback for 404 or unknown section
-                    contentHtml = `
-                        <div class="container mx-auto my-12 p-4 text-center">
-                            <div class="bg-white p-10 rounded-xl shadow-2xl border border-gray-200">
-                                <i data-lucide="triangle-alert" size="60" class="text-red-500 mx-auto mb-6"></i>
-                                <h2 class="text-5xl font-bold text-gray-800 mb-4">404</h2>
-                                <p class="text-2xl text-gray-700 mb-6">Oops! Page Not Found.</p>
-                                <p class="text-lg text-gray-600 max-w-xl mx-auto mb-8">
-                                    The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
-                                </p>
-                                <button onclick="loadContent('home')" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-700 transition-colors duration-200 transform hover:scale-105">
-                                    Go to Homepage
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                    break;
-            }
-
-            mainContentDiv.innerHTML = contentHtml;
-
-            // Add active state to the current nav button
-            const activeNavButton = document.querySelector(`.navbar-menu button[data-section="${sectionId}"]`);
-            if (activeNavButton) {
-                activeNavButton.classList.remove('text-gray-300', 'hover:bg-gray-700', 'hover:text-white');
-                activeNavButton.classList.add('bg-indigo-600', 'text-white');
-            }
-
-            // Re-render Lucide icons for newly loaded content
-            renderLucideIcons();
-
-            // Initialize Rive animation only if it's the home page
-            if (runRive) {
-                initRiveAnimation();
-            } else {
-                // Clean up Rive instance if navigating away from home page
-                if (riveInstance) {
-                    riveInstance.stop();
-                    riveInstance.cleanup();
-                    riveInstance = null;
-                }
-            }
-
-            // Hide mobile nav menu after selection
-            const navbarMenu = document.getElementById('navbar-menu');
-            if (navbarMenu.classList.contains('active')) {
-                navbarMenu.classList.remove('active');
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             // Set current year in footer
-            document.getElementById('current-year').textContent = new Date().getFullYear();
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-            // Initial content load (Home Page)
-            loadContent('home');
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const navLinksMobile = document.querySelectorAll('#mobileMenu a');
 
-            // Event listeners for navigation buttons
-            document.querySelectorAll('.navbar-menu button').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const sectionId = event.currentTarget.dataset.section;
-                    loadContent(sectionId);
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                if (mobileMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close mobile menu when a link is clicked
+            navLinksMobile.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
                 });
             });
 
-            // Event listener for site logo to return to home
-            document.getElementById('site-logo').addEventListener('click', (event) => {
-                event.preventDefault();
-                loadContent('home');
-            });
+            // Hero Slider
+            const sliderTrack = document.getElementById('sliderTrack');
+            const slides = document.querySelectorAll('.hero-slider .slide');
+            const dotsContainer = document.getElementById('sliderDots');
+            let currentSlide = 0;
+            let autoSlideInterval;
 
-            // Mobile navigation toggle
-            const navToggle = document.getElementById('nav-toggle');
-            const navbarMenu = document.getElementById('navbar-menu');
-
-            if (navToggle && navbarMenu) {
-                navToggle.addEventListener('click', () => {
-                    navbarMenu.classList.toggle('active');
+            function createDots() {
+                slides.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.classList.add('slider-dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(index));
+                    dotsContainer.appendChild(dot);
                 });
             }
 
-            // Ensure Lucide icons are rendered on initial load
-            renderLucideIcons();
+            function updateDots() {
+                document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                const offset = -currentSlide * 100;
+                sliderTrack.style.transform = `translateX(${offset}%)`;
+                updateDots();
+                resetAutoSlide();
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                goToSlide(currentSlide);
+            }
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 7000); // Change slide every 7 seconds
+            }
+
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            createDots();
+            startAutoSlide();
+
+            // Metric Animation on Scroll (Intersection Observer)
+            const metricItems = document.querySelectorAll('.metric-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const valueElement = entry.target.querySelector('.metric-value');
+                        const targetValue = parseInt(entry.target.dataset.value);
+                        let currentValue = 0;
+                        const duration = 2000;
+                        const startTime = performance.now();
+
+                        const animateCount = (timestamp) => {
+                            const progress = (timestamp - startTime) / duration;
+                            currentValue = Math.floor(progress * targetValue);
+                            if (currentValue > targetValue) currentValue = targetValue;
+                            valueElement.textContent = currentValue + (entry.target.querySelector('.metric-label').textContent.includes('%') ? '%' : '');
+                            if (progress < 1) {
+                                requestAnimationFrame(animateCount);
+                            } else {
+                                valueElement.textContent = targetValue + (entry.target.querySelector('.metric-label').textContent.includes('%') ? '%' : '');
+                                entry.target.classList.add('animated');
+                            }
+                        };
+                        requestAnimationFrame(animateCount);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            metricItems.forEach(item => {
+                observer.observe(item);
+            });
+
+            // Product Carousel (3D Rotating) - Play/Pause on hover
+            const productCarousel = document.getElementById('productCarousel');
+            if (productCarousel) {
+                productCarousel.addEventListener('mouseenter', () => {
+                    productCarousel.classList.add('paused');
+                });
+                productCarousel.addEventListener('mouseleave', () => {
+                    productCarousel.classList.remove('paused');
+                });
+            }
+
+            // Product Modal functionality
+            const productModal = document.getElementById('productModal');
+            const closeModalBtn = document.querySelector('.close-modal');
+            const viewDetailBtns = document.querySelectorAll('.view-product-detail');
+
+            // Example product data (you'd replace this with real data, perhaps from a JSON or backend)
+            const allProductsData = [
+                {
+                    title: 'Quantum End Mill Pro',
+                    image: 'https://images.unsplash.com/photo-1618210457618-b2a6a0904128?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwyMHx8Y3V0dGluZyUyMHRvb2wlMjBhdHRhY2htZW50fGVufDB8fHx8MTcxMTExMjcwN3ww&ixlib=rb-4.0.3&q=80&w=600',
+                    description: 'The Quantum End Mill Pro delivers unparalleled precision and efficiency for high-speed milling operations. Its advanced geometry ensures superior chip evacuation and extended tool life, even in the toughest materials. Ideal for aerospace, automotive, and mold & die industries.',
+                    specs: [
+                        { label: 'Material Grade', value: 'Micro-Grain Carbide' },
+                        { label: 'Coating Type', value: 'AlCrN (Aluminum Chromium Nitride)' },
+                        { label: 'Applications', value: 'High-Speed Milling, Roughing, Finishing' },
+                        { label: 'Compatible Materials', value: 'Steel, Stainless Steel, Titanium Alloys' },
+                        { label: 'Diameter Range', value: 'Ø6mm - Ø25mm' },
+                        { label: 'Flutes', value: '4/6/8' }
+                    ]
+                },
+                {
+                    title: 'Aura Drill Master Series',
+                    image: 'https://images.unsplash.com/photo-1589998135896-1877662862a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwxOXx8ZHJpbGwlMjBiaXQlMjBjbG9zZXVwfGVufDB8fHx8MTcxMTExMjcwN3ww&ixlib=rb-4.0.3&q=80&w=600',
+                    description: 'The Aura Drill Master Series is engineered for exceptional accuracy and hole quality across a wide range of materials. Featuring a unique flute design, it ensures excellent chip control and reduced thrust force, enhancing productivity and machine longevity. Perfect for deep hole drilling and high-volume production.',
+                    specs: [
+                        { label: 'Material Grade', value: 'Solid Carbide' },
+                        { label: 'Coating Type', value: 'TiAlN (Titanium Aluminum Nitride)' },
+                        { label: 'Applications', value: 'General Drilling, Deep Hole Drilling' },
+                        { label: 'Compatible Materials', value: 'Cast Iron, Non-Ferrous Metals, Composites' },
+                        { label: 'Diameter Range', value: 'Ø3mm - Ø20mm' },
+                        { label: 'Coolant Through', value: 'Yes' }
+                    ]
+                },
+                {
+                    title: 'Fusion Turning Insert',
+                    image: 'https://images.unsplash.com/photo-1621243886427-935f8e6c40a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwyMXx8dHVybmluZyUyMGluc2VydHxlbnwwfHx8fDE3MTExMTI3MDd8MA&ixlib=rb-4.0.3&q=80&w=600',
+                    description: 'The Fusion Turning Insert is optimized for high-feed turning of stainless steel and superalloys, delivering unmatched performance and extended tool life. Its innovative chipbreaker geometry ensures excellent chip control and reduced cutting forces, making it ideal for continuous and interrupted cuts.',
+                    specs: [
+                        { label: 'Material Grade', value: 'Ceramic/Cermet' },
+                        { label: 'Coating Type', value: ' CVD (Chemical Vapor Deposition)' },
+                        { label: 'Applications', value: 'External Turning, Face Turning' },
+                        { label: 'Compatible Materials', value: 'Stainless Steel, Heat Resistant Alloys' },
+                        { label: 'Insert Shape', value: 'CNMG, DNMG, WNMG' },
+                        { label: 'Chipbreaker', value: 'M, F, R type' }
+                    ]
+                },
+                {
+                    title: 'Helix ThreadMill Pro',
+                    image: 'https://images.unsplash.com/photo-1601007996362-e64906f2c7a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwyNHx8dGhyZWFkaW5nJTIwdG9vbHxlbnwwfHx8fDE3MTExMTI3MDd8MA&ixlib=rb-4.0.3&q=80&w=600',
+                    description: 'The Helix ThreadMill Pro series offers efficient and precise threading solutions for both internal and external applications. Its multi-tooth design ensures fast material removal and superior thread quality, significantly reducing cycle times and improving productivity. Perfect for small batch or complex thread profiles.',
+                    specs: [
+                        { label: 'Material Grade', value: 'Solid Carbide' },
+                        { label: 'Coating Type', value: 'PVD (Physical Vapor Deposition)' },
+                        { label: 'Applications', value: 'Internal/External Threading' },
+                        { label: 'Compatible Materials', value: 'Steel, Aluminum, Plastics' },
+                        { label: 'Thread Profile', value: 'Metric, UNF, NPT' },
+                        { label: 'Coolant Through', value: 'Optional' }
+                    ]
+                },
+                {
+                    title: 'Dyna-Grip Tool Holder',
+                    image: 'https://images.unsplash.com/photo-1610484732103-a212e52e4b3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwyNnx8dG9vbCUyMGhvbGRlcnxlbnwwfHx8fDE3MTExMTI3MDd8MA&ixlib=rb-4.0.3&q=80&w=600',
+                    description: 'The Dyna-Grip Tool Holder is designed to minimize chatter and improve surface finish with its advanced vibration dampening technology. It provides exceptional stability and rigidity, extending tool life and enabling higher cutting parameters for superior machining results.',
+                    specs: [
+                        { label: 'Material', value: 'High-Strength Steel Alloy' },
+                        { label: 'Dampening System', value: 'Internal Harmonic Dampener' },
+                        { label: 'Applications', value: 'Deep Hole Machining, High-Precision Milling' },
+                        { label: 'Tool Interface', value: 'HSK, BT, SK' },
+                        { label: 'Length Range', value: '100mm - 300mm' },
+                        { label: 'Compatibility', value: 'All Major Machine Brands' }
+                    ]
+                },
+                {
+                    title: 'Bio-Coolant Fluid',
+                    image: 'https://images.unsplash.com/photo-1618210457618-b2a6a0904128?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwyMHx8Y3V0dGluZyUyMHRvb2wlMjBhdHRhY2htZW50fGVufDB8fHx8MTcxMTExMjcwN3ww&ixlib=rb-4.0.3&q=80&w=600', // Reusing for placeholder example
+                    description: 'Our Eco-Cutting Fluid is an environmentally friendly solution for extended tool life and superior cooling in various machining operations. Formulated with biodegradable components, it ensures excellent lubricity and chip evacuation while minimizing environmental impact and operator exposure.',
+                    specs: [
+                        { label: 'Type', value: 'Semi-Synthetic Emulsion' },
+                        { label: 'Biodegradability', value: '>90%' },
+                        { label: 'Applications', value: 'Milling, Turning, Grinding, Drilling' },
+                        { label: 'Benefits', value: 'Extended Tool Life, Superior Cooling, Operator Safety' },
+                        { label: 'Compliance', value: 'REACH, RoHS, OSHA' },
+                        { label: 'Volume', value: '20L, 200L, 1000L IBC' }
+                    ]
+                },
+                {
+                    title: 'Digital Precision Gauge',
+                    image: 'https://images.unsplash.com/photo-1589998135896-1877662862a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwxOXx8ZHJpbGwlMjBiaXQlMjBjbG9zZXVwfGVufDB8fHx8MTcxMTExMjcwN3ww&ixlib=rb-4.0.3&q=80&w=600', // Reusing for placeholder example
+                    description: 'The Digital Precision Gauge provides high-accuracy measurement for quality control in demanding industrial environments. Its robust design and intuitive digital interface ensure reliable and repeatable measurements, critical for maintaining tight tolerances in precision manufacturing.',
+                    specs: [
+                        { label: 'Measurement Range', value: '0-150 mm' },
+                        { label: 'Accuracy', value: '±0.002 mm' },
+                        { label: 'Display', value: 'Large LCD' },
+                        { label: 'Connectivity', value: 'USB Data Output' },
+                        { label: 'Material', value: 'Stainless Steel' },
+                        { label: 'Battery Life', value: '2000 hours' }
+                    ]
+                },
+                {
+                    title: 'IoT Smart Tool Sensor',
+                    image: 'https://images.unsplash.com/photo-1621243886427-935f8e6c40a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjd8MHwxfHNlYXJjaHwyMXx8dHVybmluZyUyMGluc2VydHxlbnwwfHx8fDE3MTExMTI3MDd8MA&ixlib=rb-4.0.3&q=80&w=600', // Reusing for placeholder example
+                    description: 'The IoT Smart Tool Sensor enables real-time monitoring of tool wear, vibration, and temperature with integrated IoT capabilities. This predictive maintenance solution helps prevent unplanned downtime, optimize tool changes, and ensure consistent part quality in smart factories.',
+                    specs: [
+                        { label: 'Data Points', value: 'Vibration, Temp, Wear' },
+                        { label: 'Connectivity', value: 'Wi-Fi, Bluetooth, Zigbee' },
+                        { label: 'Battery Life', value: 'Up to 12 months' },
+                        { label: 'Integration', value: 'API for ERP/MES Systems' },
+                        { label: 'Mounting', value: 'Non-Invasive Magnetic' },
+                        { label: 'Analytics', value: 'Cloud-Based Dashboard' }
+                    ]
+                }
+            ];
+
+
+            function openModal(productData) {
+                document.getElementById('modalProductImage').src = productData.image;
+                document.getElementById('modalProductTitle').textContent = productData.title;
+                document.getElementById('modalProductDescription').textContent = productData.description;
+
+                const specsList = document.getElementById('modalProductSpecs');
+                specsList.innerHTML = '';
+                productData.specs.forEach(spec => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<span>${spec.label}:</span> <span>${spec.value}</span>`;
+                    specsList.appendChild(li);
+                });
+
+                productModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeProductModal() {
+                productModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            viewDetailBtns.forEach((button, index) => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Use the index to get data from the pre-defined array
+                    if (allProductsData[index]) {
+                        openModal(allProductsData[index]);
+                    }
+                });
+            });
+
+            closeModalBtn.addEventListener('click', closeProductModal);
+
+            productModal.addEventListener('click', (e) => {
+                if (e.target === productModal) {
+                    closeProductModal();
+                }
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    // Calculate offset to account for fixed header
+                    const headerOffset = 90; // Height of your fixed header
+                    const element = document.querySelector(this.getAttribute('href'));
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Update active nav link on scroll
+            const sections = document.querySelectorAll('section, footer');
+            const navLi = document.querySelectorAll('.nav-links li');
+            const mobileNavLi = document.querySelectorAll('.mobile-menu ul li');
+            const headerHeight = document.querySelector('header').offsetHeight; // Get dynamic header height
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - headerHeight - 50; // Adjust offset for header and some padding
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                // Handle the case where the user is at the very top of the page
+                if (window.pageYOffset === 0) {
+                    current = 'home';
+                }
+
+                navLi.forEach(li => {
+                    li.classList.remove('active');
+                    const linkHref = li.querySelector('a').getAttribute('href');
+                    if (linkHref && linkHref.includes(current)) {
+                        li.classList.add('active');
+                    } else if (linkHref === '#contact-footer' && current === 'contact-footer') {
+                         li.classList.add('active');
+                    }
+                });
+
+                mobileNavLi.forEach(li => {
+                    li.classList.remove('active');
+                    const linkHref = li.querySelector('a').getAttribute('href');
+                     if (linkHref && linkHref.includes(current)) {
+                        li.classList.add('active');
+                    } else if (linkHref === '#contact-footer' && current === 'contact-footer') {
+                         li.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
 </body>

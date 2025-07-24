@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cutting Tool Inserts | Enginech Techno Solution</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/lightgallery.min.css">
+</head>
+<body>
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fas fa-phone-alt"></i> +91 99090 13177</span>
+                <span><i class="fas fa-envelope"></i> arun@enginechsolution.com</span>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <h1 class="logo">ENGINECH</h1>
+                    <span class="tagline">Techno Solution</span>
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Hero Section -->
+    <section class="product-hero" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/inserts-hero.jpg');">
+        <div class="container">
+            <h1>Precision Cutting Inserts</h1>
+            <p>Optimized for performance across all machining applications</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb Navigation -->
+    <section class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a> &gt;
+            <a href="products.html">Products</a> &gt;
+            <span>Cutting Inserts</span>
+        </div>
+    </section>
+
+    <!-- Insert Types Section -->
+    <section class="insert-types">
+        <div class="container">
+            <!-- Turning Inserts -->
+            <div class="insert-category" id="turning">
+                <div class="category-header">
+                    <h2><i class="fas fa-rotate"></i> Turning Inserts</h2>
+                    <div class="insert-filter">
+                        <select id="turning-filter">
+                            <option value="all">All Turning Inserts</option>
+                            <option value="cnmg">CNMG</option>
+                            <option value="wnmg">WNMG</option>
+                            <option value="dnmg">DNMG</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="insert-content">
+                    <div class="insert-media">
+                        <div class="main-video">
+                            <iframe src="https://www.youtube.com/embed/WALTER_INSERT_VIDEO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="insert-gallery" id="turning-gallery">
+                            <a href="images/products/turning1-large.jpg" class="gallery-item" data-sub-html="CNMG 120408 Insert">
+                                <img src="images/products/turning1.jpg" alt="CNMG Insert">
+                                <p>CNMG 120408</p>
+                            </a>
+                            <a href="images/products/turning2-large.jpg" class="gallery-item" data-sub-html="WNMG 080408 Insert">
+                                <img src="images/products/turning2.jpg" alt="WNMG Insert">
+                                <p>WNMG 080408</p>
+                            </a>
+                            <!-- More gallery items -->
+                        </div>
+                    </div>
+                    
+                    <div class="technical-specs">
+                        <div class="specs-header">
+                            <h3>Technical Specifications</h3>
+                            <button class="download-specs">
+                                <i class="fas fa-download"></i> Download PDF
+                            </button>
+                        </div>
+                        
+                        <div class="specs-tabs">
+                            <button class="specs-tab active" data-tab="general">General</button>
+                            <button class="specs-tab" data-tab="grades">Grades</button>
+                            <button class="specs-tab" data-tab="geometry">Geometry</button>
+                        </div>
+                        
+                        <div class="specs-content active" id="general-specs">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Insert Type</th>
+                                        <th>Material</th>
+                                        <th>Coating</th>
+                                        <th>Applications</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CNMG</td>
+                                        <td>Carbide</td>
+                                        <td>TiAlN</td>
+                                        <td>Steel, Stainless Steel</td>
+                                    </tr>
+                                    <!-- More rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="specs-content" id="grades-specs">
+                            <!-- Grades content loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Milling Inserts Section -->
+            <div class="insert-category" id="milling">
+                <!-- Similar structure as turning inserts -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Guide Section -->
+    <section class="application-guide">
+        <div class="container">
+            <h2>Insert Application Guide</h2>
+            <div class="guide-container">
+                <div class="guide-card">
+                    <i class="fas fa-industry"></i>
+                    <h3>Material Selection</h3>
+                    <p>Choose the right insert grade for your workpiece material</p>
+                    <a href="#" class="btn-outline">View Guide</a>
+                </div>
+                <div class="guide-card">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Cutting Parameters</h3>
+                    <p>Optimal speeds and feeds for different operations</p>
+                    <a href="#" class="btn-outline">View Guide</a>
+                </div>
+                <div class="guide-card">
+                    <i class="fas fa-life-ring"></i>
+                    <h3>Troubleshooting</h3>
+                    <p>Solutions for common insert wear problems</p>
+                    <a href="#" class="btn-outline">View Guide</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Support CTA -->
+    <section class="tech-support-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h3>Need Help Selecting Inserts?</h3>
+                <p>Our technical team can recommend the perfect insert for your application</p>
+                <div class="cta-buttons">
+                    <a href="tel:+919909013177" class="cta-btn phone">
+                        <i class="fas fa-phone-alt"></i> Call Now
+                    </a>
+                    <a href="mailto:arun@enginechsolution.com" class="cta-btn email">
+                        <i class="fas fa-envelope"></i> Email Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>ENGINECH</h3>
+                    <p>Techno Solution</p>
+                    <p>E 601, Shubh Vatika, Near Shreenathji Society, Karadawa Road, Dindoli, Surat - 394 210.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> +91 99090 13177</p>
+                    <p><i class="fas fa-envelope"></i> arun@enginechsolution.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Enginech Techno Solution. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/lightgallery.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+    $(document).ready(function() {
+        // Initialize lightGallery
+        $('#turning-gallery').lightGallery({
+            selector: '.gallery-item',
+            download: false,
+            share: false
+        });
+
+        // Filter turning inserts
+        $('#turning-filter').change(function() {
+            const filter = $(this).val();
+            // Filter logic would go here
+        });
+
+        // Specs tabs functionality
+        $('.specs-tab').click(function() {
+            const tabId = $(this).data('tab');
+            
+            // Remove active class from all tabs and content
+            $('.specs-tab').removeClass('active');
+            $('.specs-content').removeClass('active');
+            
+            // Add active class to clicked tab and corresponding content
+            $(this).addClass('active');
+            $(`#${tabId}-specs`).addClass('active');
+        });
+
+        // Mobile menu toggle
+        $('.mobile-menu-btn').click(function() {
+            $('.main-nav').toggleClass('active');
+        });
+    });
+    </script>
+</body>
+</html>

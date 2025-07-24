@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | Enginech Techno Solution | Precision Engineering Tools</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fas fa-phone-alt"></i> +91 99090 13177</span>
+                <span><i class="fas fa-envelope"></i> arun@enginechsolution.com</span>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <h1 class="logo">ENGINECH</h1>
+                    <span class="tagline">Techno Solution</span>
+                </a>
+            </div>
+            
+            <div class="search-container">
+                <form id="search-form" method="get">
+                    <input type="text" id="search-input" placeholder="Search products..." autocomplete="off">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                    <div id="search-results" class="search-results"></div>
+                </form>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html" class="active">Products</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+            
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Hero Banner -->
+    <section class="products-hero" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/products-banner.jpg');">
+        <div class="container">
+            <h1>Precision Engineering Products</h1>
+            <p>High-performance solutions for industrial machining</p>
+        </div>
+    </section>
+
+    <!-- Product Navigation -->
+    <section class="product-nav">
+        <div class="container">
+            <div class="product-categories">
+                <button class="category-btn active" data-category="all">All Products</button>
+                <button class="category-btn" data-category="inserts">Cutting Inserts</button>
+                <button class="category-btn" data-category="tools">Tooling Systems</button>
+                <button class="category-btn" data-category="measurement">Measurement</button>
+                <button class="category-btn" data-category="accessories">Accessories</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Products Section -->
+    <section class="main-products">
+        <div class="container">
+            <!-- Cutting Inserts Category -->
+            <div class="product-category active" id="inserts-category">
+                <div class="category-header">
+                    <h2><i class="fas fa-cut"></i> Cutting Tool Inserts</h2>
+                    <div class="category-filter">
+                        <select id="inserts-filter">
+                            <option value="all">All Inserts</option>
+                            <option value="turning">Turning</option>
+                            <option value="milling">Milling</option>
+                            <option value="drilling">Drilling</option>
+                            <option value="threading">Threading</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="product-grid">
+                    <!-- Turning Inserts -->
+                    <div class="product-card" data-type="turning">
+                        <div class="product-badge">Best Seller</div>
+                        <div class="product-image">
+                            <img src="images/products/turning-inserts.jpg" alt="Turning Inserts">
+                            <div class="quick-view">Quick View</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Turning Inserts</h3>
+                            <div class="product-specs">
+                                <span><i class="fas fa-ruler-combined"></i> CNMG, DNMG, WNMG</span>
+                                <span><i class="fas fa-fire"></i> High Temp Resistant</span>
+                            </div>
+                            <a href="inserts.html#turning" class="btn btn-outline">View Options <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Milling Inserts -->
+                    <div class="product-card" data-type="milling">
+                        <div class="product-image">
+                            <img src="images/products/milling-inserts.jpg" alt="Milling Inserts">
+                            <div class="quick-view">Quick View</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Milling Inserts</h3>
+                            <div class="product-specs">
+                                <span><i class="fas fa-ruler-combined"></i> Square, Round, Octagonal</span>
+                                <span><i class="fas fa-tachometer-alt"></i> High Feed Rates</span>
+                            </div>
+                            <a href="inserts.html#milling" class="btn btn-outline">View Options <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional product cards -->
+                </div>
+            </div>
+            
+            <!-- Other categories (initially hidden) -->
+            <div class="product-category" id="tools-category">
+                <!-- Tooling Systems content -->
+            </div>
+            
+            <div class="product-category" id="measurement-category">
+                <!-- Measurement content -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Comparison Section -->
+    <section class="tech-comparison">
+        <div class="container">
+            <h2>Technical Specifications Comparison</h2>
+            <div class="comparison-tool">
+                <div class="comparison-controls">
+                    <select id="product1">
+                        <option value="">Select Product 1</option>
+                        <option value="cnmg">CNMG Turning Insert</option>
+                        <option value="wnmg">WNMG Turning Insert</option>
+                    </select>
+                    <select id="product2">
+                        <option value="">Select Product 2</option>
+                        <option value="cnmg">CNMG Turning Insert</option>
+                        <option value="wnmg">WNMG Turning Insert</option>
+                    </select>
+                </div>
+                <div class="comparison-results">
+                    <!-- Comparison table will be generated here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Support Section -->
+    <section class="product-support">
+        <div class="container">
+            <div class="support-card">
+                <i class="fas fa-headset"></i>
+                <h3>Technical Support</h3>
+                <p>Our engineers are available to help you select the right tools for your application</p>
+                <a href="services.html" class="btn-support">Contact Support</a>
+            </div>
+            <div class="support-card">
+                <i class="fas fa-file-pdf"></i>
+                <h3>Product Catalogs</h3>
+                <p>Download detailed technical specifications and application guides</p>
+                <a href="#" class="btn-support">Download PDFs</a>
+            </div>
+            <div class="support-card">
+                <i class="fas fa-video"></i>
+                <h3>Video Library</h3>
+                <p>Watch product demonstrations and application videos</p>
+                <a href="#" class="btn-support">View Videos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>ENGINECH</h3>
+                    <p>Techno Solution</p>
+                    <p>E 601, Shubh Vatika, Near Shreenathji Society, Karadawa Road, Dindoli, Surat - 394 210.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> +91 99090 13177</p>
+                    <p><i class="fas fa-envelope"></i> arun@enginechsolution.com</p>
+                    <p><i class="fas fa-envelope"></i> enginech.surat@gmail.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Enginech Techno Solution. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Quick View Modal -->
+    <div class="product-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-product-view">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    $(document).ready(function() {
+        // Category filtering
+        $('.category-btn').click(function() {
+            const category = $(this).data('category');
+            $('.category-btn').removeClass('active');
+            $(this).addClass('active');
+            
+            $('.product-category').removeClass('active');
+            $(`#${category}-category`).addClass('active');
+        });
+
+        // Product type filtering
+        $('#inserts-filter').change(function() {
+            const type = $(this).val();
+            if(type === 'all') {
+                $('.product-card').show();
+            } else {
+                $('.product-card').hide();
+                $(`.product-card[data-type="${type}"]`).show();
+            }
+        });
+
+        // Quick view modal
+        $('.quick-view').click(function() {
+            const productCard = $(this).closest('.product-card');
+            const productTitle = productCard.find('h3').text();
+            
+            $('.modal-product-view').html(`
+                <div class="modal-product-image">
+                    ${productCard.find('.product-image').html()}
+                </div>
+                <div class="modal-product-details">
+                    <h3>${productTitle}</h3>
+                    <div class="product-specs">
+                        <h4>Specifications</h4>
+                        <ul>
+                            <li><strong>Material:</strong> Carbide Substrate</li>
+                            <li><strong>Coating:</strong> TiAlN</li>
+                            <li><strong>Applications:</strong> Steel, Stainless Steel</li>
+                        </ul>
+                    </div>
+                    <a href="${productCard.find('a').attr('href')}" class="btn">View Full Details</a>
+                </div>
+            `);
+            
+            $('.product-modal').fadeIn();
+        });
+
+        // Close modal
+        $('.close-modal').click(function() {
+            $('.product-modal').fadeOut();
+        });
+    });
+    </script>
+</body>
+</html>
